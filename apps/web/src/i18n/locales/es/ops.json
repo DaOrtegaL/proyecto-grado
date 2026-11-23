@@ -1,0 +1,109 @@
+{
+  "navOps": {
+    "renewals": "Gestión de renovaciones",
+    "approvals": "Centro de aprobaciones",
+    "deployments": "Instalaciones",
+    "security": "Seguridad y anomalías",
+    "metrics": "Indicadores y análisis",
+    "research": "Evidencia y trazabilidad",
+    "simulator": "Simulador de laboratorio",
+    "admin": "Administración"
+  },
+  "renewalStatus": {
+    "REQUESTED": "Solicitado", "PENDING_ISSUANCE": "Pendiente de emisión", "ISSUED": "Emitido", "PENDING_APPROVAL": "Pendiente de aprobación",
+    "APPROVED": "Aprobado", "SCHEDULED": "Programado", "INSTALLING": "En instalación", "INSTALLED": "Instalado", "VERIFIED": "Verificado",
+    "COMPLETED": "Completado", "REJECTED": "Rechazado", "FAILED": "Fallido", "CANCELLED": "Cancelado", "ROLLED_BACK": "Revertido"
+  },
+  "approvalStatus": { "PENDING": "Pendiente", "APPROVED": "Aprobada", "REJECTED": "Rechazada", "INVALIDATED": "Invalidada", "EXPIRED": "Vencida" },
+  "jobStatus": { "SCHEDULED": "Programada", "RUNNING": "En ejecución", "COMPLETED": "Completada", "FAILED": "Fallida", "ROLLED_BACK": "Revertida", "PARTIAL": "Parcial", "CANCELLED": "Cancelada" },
+  "targetStatus": { "PENDING": "Pendiente", "INSTALLED": "Instalado", "VERIFIED": "Verificado", "FAILED": "Fallido", "ROLLED_BACK": "Revertido", "ROLLBACK_FAILED": "Reversión fallida" },
+  "failureMode": { "NONE": "Sin fallas", "INSTALL_FAILURE": "Falla de instalación", "VERIFICATION_FAILURE": "Falla de verificación", "ROLLBACK_FAILURE": "Falla de verificación y de reversión" },
+  "renewals": {
+    "title": "Gestión de renovaciones", "certificate": "Certificado", "status": "Estado", "requestedBy": "Solicitante", "targets": "Terminales", "created": "Creada",
+    "view": "Ver detalle", "request": "Solicitar renovación", "reason": "Motivo", "selectTerminals": "Terminales destino", "submit": "Crear solicitud",
+    "requestIssuance": "Solicitar emisión", "issue": "Emitir (emisor simulado)", "requestApproval": "Solicitar aprobación", "cancel": "Cancelar solicitud",
+    "window": "Ventana de mantenimiento", "justification": "Justificación", "evidence": "Evidencia de emisión", "timeline": "Línea de tiempo (auditoría)",
+    "approvals": "Aprobaciones", "jobs": "Instalaciones", "allowed": "Transiciones permitidas", "noWindows": "No hay ventanas de mantenimiento vigentes. Cree una en Instalaciones.",
+    "close": "Cerrar", "emptyTargets": "Seleccione al menos una terminal."
+  },
+  "approvals": {
+    "title": "Centro de aprobaciones", "certificate": "Certificado", "terminals": "Terminales", "window": "Ventana", "requestedBy": "Solicitante", "expires": "Vence",
+    "status": "Estado", "approve": "Aprobar", "reject": "Rechazar", "justification": "Justificación de la decisión", "decisions": "Decisiones", "invalidated": "Motivo de invalidación",
+    "sodNote": "Separación de funciones: quien solicita no puede aprobar su propia solicitud."
+  },
+  "deployments": {
+    "title": "Centro de instalaciones", "windows": "Ventanas de mantenimiento", "newWindow": "Nueva ventana", "name": "Nombre", "starts": "Inicio", "ends": "Fin", "create": "Crear",
+    "schedule": "Programar instalación", "approval": "Aprobación vigente", "scheduledAt": "Fecha programada", "simulateFailure": "Inyección de fallas (solo simulación)",
+    "jobs": "Instalaciones programadas y ejecutadas", "certificate": "Certificado", "status": "Estado", "targets": "Destinos", "execute": "Ejecutar", "rollback": "Revertir",
+    "rollbackReason": "Motivo de la reversión", "attempts": "Intentos", "verification": "Verificación", "passed": "Correcta", "notPassed": "Negativa", "reconcile": "Conciliar interrumpidas",
+    "reconciled": "Instalaciones interrumpidas conciliadas: {{count}}", "mode": "Modo", "simulation": "Simulación", "noApproved": "No hay aprobaciones vigentes para programar.",
+    "labDisabled": "El modo de laboratorio autorizado está deshabilitado."
+  },
+  "security": {
+    "title": "Seguridad y anomalías", "type": "Tipo", "severity": "Severidad", "detail": "Detalle", "recommendation": "Acción recomendada", "terminal": "Terminal", "status": "Estado",
+    "resolve": "Resolver", "dismiss": "Descartar", "reason": "Motivo", "evaluate": "Reevaluar terminales", "evaluated": "Hallazgos nuevos: {{created}}; cerrados: {{resolved}}",
+    "open": "Hallazgos abiertos", "disclaimer": "Los hallazgos son indicios para revisión humana y no implican, por sí mismos, una acción maliciosa.",
+    "statuses": { "OPEN": "Abierto", "RESOLVED": "Resuelto", "DISMISSED": "Descartado" },
+    "types": {
+      "EXPIRED": "Certificado vencido", "WEAK_ALGORITHM": "Algoritmo débil", "UNKNOWN_ISSUER": "Emisor no registrado", "NO_OWNER": "Sin responsable",
+      "UNEXPECTED_CERTIFICATE": "Certificado en almacén inesperado", "MISSING_CLIENT_CERTIFICATE": "Falta certificado de cliente", "DUPLICATE_SUBJECT": "Sujeto duplicado",
+      "STALE_INVENTORY": "Inventario desactualizado", "INCOMPATIBLE_USAGE": "Uso de certificado incompatible", "UNAUTHORIZED_CHANGE": "Cambio sin despliegue autorizado"
+    }
+  },
+  "metrics": {
+    "title": "Indicadores y análisis", "current": "Indicadores actuales (últimos 30 días)", "indicator": "Indicador", "value": "Valor", "sample": "Muestra", "target": "Meta preliminar",
+    "targetMet": "Cumple", "targetNotMet": "No cumple", "noTarget": "Sin meta", "noData": "Sin datos", "snapshots": "Línea base y piloto", "newSnapshot": "Registrar medición",
+    "kind": "Tipo", "BASELINE": "Línea base", "PILOT": "Piloto", "label": "Etiqueta", "periodStart": "Inicio del periodo", "periodEnd": "Fin del periodo", "save": "Guardar medición",
+    "compare": "Comparación", "baseline": "Línea base", "pilot": "Piloto", "absolute": "Variación absoluta", "relative": "Variación relativa", "interpretation": "Interpretación",
+    "limitations": "Limitaciones", "export": "Exportar observaciones pareadas", "sus": "Cuestionario de usabilidad (SUS)", "susSubmit": "Enviar respuestas", "susResults": "Resultados SUS",
+    "susMean": "Promedio: {{value}} (n = {{count}})", "scale": "1 = totalmente en desacuerdo, 5 = totalmente de acuerdo", "incidents": "Incidentes P1/P2 registrados",
+    "synthetic": "Sintético", "names": {
+      "INVENTORY_COVERAGE": "Cobertura del inventario", "ALERT_ANTICIPATION": "Anticipación de alertas (días)", "RENEWAL_TIME": "Tiempo de renovación (horas)",
+      "INSTALL_SUCCESS_RATE": "Tasa de éxito de instalación (%)", "DEPLOYMENT_ERROR_RATE": "Errores de despliegue (%)", "FALSE_POSITIVE_RATE": "Falsos positivos (%)",
+      "AUDIT_COMPLETENESS": "Completitud de auditoría (%)", "INCIDENTS_P1P2": "Incidentes P1/P2", "SUS_SCORE": "Usabilidad SUS (0–100)"
+    }
+  },
+  "research": {
+    "title": "Evidencia y trazabilidad", "runs": "Registro experimental", "code": "Código", "requirement": "Requisito", "scenario": "Escenario", "date": "Fecha", "status": "Estado",
+    "origin": "Origen", "export": "Exportar", "traceability": "Matriz de trazabilidad", "objective": "Objetivo", "module": "Módulo", "component": "Componente", "testCase": "Caso de prueba",
+    "trl": "Madurez tecnológica (TRL)", "level": "Nivel", "passed": "Ejecuciones aprobadas", "sufficient": "Evidencia mínima", "notDeclared": "No se declara nivel", "yes": "Alcanzada", "no": "Insuficiente",
+    "trlStatement": "El nivel TRL no se declara por haber implementado código: requiere evidencia experimental aprobada y revisión del evaluador.",
+    "statuses": { "NOT_STARTED": "No iniciado", "IN_DEVELOPMENT": "En desarrollo", "IMPLEMENTED": "Implementado", "TESTED": "Probado", "VALIDATED": "Validado" },
+    "runStatuses": { "PASSED": "Aprobada", "FAILED": "Fallida", "PENDING": "Pendiente" }
+  },
+  "simulator": {
+    "title": "Simulador de laboratorio", "intro": "Ejecuta escenarios reproducibles sobre terminales virtuales con certificados X.509 sintéticos y registra cada ejecución como evidencia experimental. Los resultados no representan infraestructura productiva.",
+    "code": "Escenario", "requirement": "Requisito", "last": "Última ejecución", "run": "Ejecutar", "runAll": "Ejecutar los 16 escenarios", "running": "Ejecutando…", "never": "Sin ejecutar",
+    "summary": "Resultado: {{passed}} de {{total}} escenarios aprobados."
+  },
+  "admin": {
+    "title": "Administración", "users": "Usuarios", "roles": "Roles y permisos", "owners": "Responsables", "policies": "Políticas", "email": "Correo", "name": "Nombre", "active": "Activo",
+    "role": "Roles", "permissions": "Permisos", "issuer": "Emisor", "policy": "Política", "owner": "Responsable", "assign": "Asignar", "none": "Sin responsable",
+    "precedence": "Precedencia al resolver el responsable efectivo: certificado → política → emisor (la regla más específica prevalece).", "newOwner": "Nuevo responsable", "create": "Crear",
+    "config": "Configuración", "key": "Clave", "value": "Valor", "save": "Guardar", "reason": "Motivo del cambio", "certPolicies": "Políticas de certificados",
+    "minKey": "Tamaño mínimo de clave", "thresholds": "Umbrales de alerta (días)", "requiredEku": "Uso extendido requerido", "readOnly": "Solo lectura para su rol.",
+    "keys": { "approval.separationOfDuties": "Separación de funciones en aprobaciones", "approval.validityHours": "Vigencia de la aprobación (horas)" }
+  },
+  "errorsOps": {
+    "RENEWAL_NOT_FOUND": "La solicitud de renovación no existe.",
+    "RENEWAL_ALREADY_ACTIVE": "Ya existe una renovación activa para este certificado.",
+    "TERMINAL_NOT_ASSOCIATED": "Alguna terminal seleccionada no tiene instalado el certificado.",
+    "INVALID_TRANSITION": "La transición de estado solicitada no está permitida.",
+    "SELF_APPROVAL_FORBIDDEN": "El solicitante no puede aprobar su propia solicitud.",
+    "APPROVAL_EXPIRED": "La aprobación venció; debe solicitarse nuevamente.",
+    "APPROVAL_INVALIDATED": "Los parámetros cambiaron; la aprobación fue invalidada.",
+    "APPROVAL_INVALID": "La aprobación ya no es válida; la instalación fue cancelada.",
+    "APPROVAL_NOT_APPROVED": "La instalación requiere una aprobación vigente.",
+    "APPROVAL_NOT_PENDING": "La solicitud de aprobación ya no está pendiente.",
+    "MAINTENANCE_WINDOW_INVALID": "La ventana de mantenimiento no existe, está inactiva o ya terminó.",
+    "OUTSIDE_MAINTENANCE_WINDOW": "La operación está fuera de la ventana de mantenimiento.",
+    "JOB_ALREADY_EXECUTED": "La instalación ya fue ejecutada o no está programada.",
+    "ALREADY_SCHEDULED": "La renovación ya tiene una instalación programada.",
+    "ROLLBACK_NOT_APPLICABLE": "El destino no admite reversión en su estado actual.",
+    "LAB_MODE_DISABLED": "El modo de laboratorio autorizado está deshabilitado.",
+    "EVIDENCE_REQUIRED": "Un requisito solo puede validarse con una ejecución experimental aprobada.",
+    "FINDING_NOT_OPEN": "El hallazgo ya fue cerrado.",
+    "OWNER_EMAIL_EXISTS": "Ya existe un responsable con ese correo.",
+    "ISSUED_CERTIFICATE_INVALID": "El certificado emitido no cumple la política."
+  }
+}

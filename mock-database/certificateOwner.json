@@ -1,0 +1,16 @@
+[
+  {
+    "id": "9522c544-5e39-47bf-a8c6-a151b712636e",
+    "name": "Equipo PKI interna (sintético)",
+    "email": "equipo.pki@msh.lab",
+    "countryId": null,
+    "userId": "26ca30e5-0b72-4f12-abe9-41ff2b06998d"
+  },
+  {
+    "id": "5d18f2f9-c8a5-4f43-af2d-6f8ce5768b94",
+    "name": "Responsable proveedor externo (sintético)",
+    "email": "proveedor.externo@msh.lab",
+    "countryId": null,
+    "userId": "2af4e7a7-25af-4f49-b3f7-3eb67a540942"
+  }
+]

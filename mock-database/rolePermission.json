@@ -1,0 +1,586 @@
+[
+  {
+    "roleId": "0b2fe6db-a969-4493-8a1a-40b58dc02018",
+    "permissionId": "d0f9b297-ca60-40e1-adfb-b945444af446"
+  },
+  {
+    "roleId": "0b2fe6db-a969-4493-8a1a-40b58dc02018",
+    "permissionId": "b8c1d591-5586-42ef-b653-4710d621075d"
+  },
+  {
+    "roleId": "0b2fe6db-a969-4493-8a1a-40b58dc02018",
+    "permissionId": "b173c106-93f4-4984-8f7b-911b624de675"
+  },
+  {
+    "roleId": "0b2fe6db-a969-4493-8a1a-40b58dc02018",
+    "permissionId": "cc70ee06-9da9-456e-929c-bac4cef06cc6"
+  },
+  {
+    "roleId": "0b2fe6db-a969-4493-8a1a-40b58dc02018",
+    "permissionId": "3b4665a8-b4b6-4d92-90f6-abf2e1162a7a"
+  },
+  {
+    "roleId": "0b2fe6db-a969-4493-8a1a-40b58dc02018",
+    "permissionId": "aa08b384-0389-4899-be8b-5976a5f3ef3a"
+  },
+  {
+    "roleId": "0b2fe6db-a969-4493-8a1a-40b58dc02018",
+    "permissionId": "f573ef94-739b-4347-86b2-cd712bb37b17"
+  },
+  {
+    "roleId": "0b2fe6db-a969-4493-8a1a-40b58dc02018",
+    "permissionId": "7de98e13-3d0d-40c8-bb5b-c12e46bd7a8d"
+  },
+  {
+    "roleId": "0b2fe6db-a969-4493-8a1a-40b58dc02018",
+    "permissionId": "4cf82bbd-3e14-4f0e-b6d8-f16928cae007"
+  },
+  {
+    "roleId": "0b2fe6db-a969-4493-8a1a-40b58dc02018",
+    "permissionId": "97f07e97-0027-4cab-8e49-5562767439c5"
+  },
+  {
+    "roleId": "0b2fe6db-a969-4493-8a1a-40b58dc02018",
+    "permissionId": "77c21da2-5215-4502-bcae-c9bc4ff1c780"
+  },
+  {
+    "roleId": "0b2fe6db-a969-4493-8a1a-40b58dc02018",
+    "permissionId": "8cb737cc-7155-4297-8ce8-8d8c57408878"
+  },
+  {
+    "roleId": "0b2fe6db-a969-4493-8a1a-40b58dc02018",
+    "permissionId": "8623db04-36db-460e-b703-f84168f3680a"
+  },
+  {
+    "roleId": "0b2fe6db-a969-4493-8a1a-40b58dc02018",
+    "permissionId": "0855c4a1-8043-4f31-ba6d-723b294d9cb0"
+  },
+  {
+    "roleId": "0b2fe6db-a969-4493-8a1a-40b58dc02018",
+    "permissionId": "dd0f441c-5616-4387-8817-fb4d4a04cfd0"
+  },
+  {
+    "roleId": "0b2fe6db-a969-4493-8a1a-40b58dc02018",
+    "permissionId": "9ca64074-70f0-4c7a-b6f9-be3e92aca238"
+  },
+  {
+    "roleId": "0b2fe6db-a969-4493-8a1a-40b58dc02018",
+    "permissionId": "7acf7cfd-833a-4df7-bacc-0e1644d13201"
+  },
+  {
+    "roleId": "0b2fe6db-a969-4493-8a1a-40b58dc02018",
+    "permissionId": "210883e1-77fe-457b-aef9-74d712e9388c"
+  },
+  {
+    "roleId": "0b2fe6db-a969-4493-8a1a-40b58dc02018",
+    "permissionId": "f335fef0-bb50-4909-97ec-f9fbfe69c7aa"
+  },
+  {
+    "roleId": "0b2fe6db-a969-4493-8a1a-40b58dc02018",
+    "permissionId": "b2b530f0-e790-45c2-90c1-5a29aa59010c"
+  },
+  {
+    "roleId": "0b2fe6db-a969-4493-8a1a-40b58dc02018",
+    "permissionId": "b8b15905-ed47-48c4-9693-f9edf5ae43be"
+  },
+  {
+    "roleId": "0b2fe6db-a969-4493-8a1a-40b58dc02018",
+    "permissionId": "bea587e5-bab4-40e9-87aa-d35bf123ad26"
+  },
+  {
+    "roleId": "0b2fe6db-a969-4493-8a1a-40b58dc02018",
+    "permissionId": "51caccc8-1855-4703-8e7a-f02432a7d489"
+  },
+  {
+    "roleId": "0b2fe6db-a969-4493-8a1a-40b58dc02018",
+    "permissionId": "faf9a93a-75e0-453a-9eff-83c8f0d7a959"
+  },
+  {
+    "roleId": "0b2fe6db-a969-4493-8a1a-40b58dc02018",
+    "permissionId": "396e5961-5064-44c9-bfa1-543f76481397"
+  },
+  {
+    "roleId": "0b2fe6db-a969-4493-8a1a-40b58dc02018",
+    "permissionId": "dd8c7cf9-ebcb-4aaa-b38d-c1aa33c0e5ac"
+  },
+  {
+    "roleId": "0b2fe6db-a969-4493-8a1a-40b58dc02018",
+    "permissionId": "87361790-a9bd-4fca-b88f-ba9a6b10c09c"
+  },
+  {
+    "roleId": "0b2fe6db-a969-4493-8a1a-40b58dc02018",
+    "permissionId": "d686d2e5-833c-45d2-b6a9-71b6e6724ec7"
+  },
+  {
+    "roleId": "0b2fe6db-a969-4493-8a1a-40b58dc02018",
+    "permissionId": "d3a16529-51c3-4187-8210-da524a651710"
+  },
+  {
+    "roleId": "0b2fe6db-a969-4493-8a1a-40b58dc02018",
+    "permissionId": "a0b0ef91-9ac0-49ab-8e5f-b4de5852a589"
+  },
+  {
+    "roleId": "0b2fe6db-a969-4493-8a1a-40b58dc02018",
+    "permissionId": "4af80f48-13dc-4801-8139-a51e37dd8599"
+  },
+  {
+    "roleId": "0b2fe6db-a969-4493-8a1a-40b58dc02018",
+    "permissionId": "3357ef65-c65b-443f-a78d-dbda143c508a"
+  },
+  {
+    "roleId": "0b2fe6db-a969-4493-8a1a-40b58dc02018",
+    "permissionId": "9b84175c-bec5-4258-8e25-0c05bff8d4b3"
+  },
+  {
+    "roleId": "369139a1-33c4-4afe-b3c6-892664e64390",
+    "permissionId": "d0f9b297-ca60-40e1-adfb-b945444af446"
+  },
+  {
+    "roleId": "369139a1-33c4-4afe-b3c6-892664e64390",
+    "permissionId": "b8c1d591-5586-42ef-b653-4710d621075d"
+  },
+  {
+    "roleId": "369139a1-33c4-4afe-b3c6-892664e64390",
+    "permissionId": "b173c106-93f4-4984-8f7b-911b624de675"
+  },
+  {
+    "roleId": "369139a1-33c4-4afe-b3c6-892664e64390",
+    "permissionId": "aa08b384-0389-4899-be8b-5976a5f3ef3a"
+  },
+  {
+    "roleId": "369139a1-33c4-4afe-b3c6-892664e64390",
+    "permissionId": "f573ef94-739b-4347-86b2-cd712bb37b17"
+  },
+  {
+    "roleId": "369139a1-33c4-4afe-b3c6-892664e64390",
+    "permissionId": "4cf82bbd-3e14-4f0e-b6d8-f16928cae007"
+  },
+  {
+    "roleId": "369139a1-33c4-4afe-b3c6-892664e64390",
+    "permissionId": "7acf7cfd-833a-4df7-bacc-0e1644d13201"
+  },
+  {
+    "roleId": "369139a1-33c4-4afe-b3c6-892664e64390",
+    "permissionId": "b2b530f0-e790-45c2-90c1-5a29aa59010c"
+  },
+  {
+    "roleId": "369139a1-33c4-4afe-b3c6-892664e64390",
+    "permissionId": "51caccc8-1855-4703-8e7a-f02432a7d489"
+  },
+  {
+    "roleId": "369139a1-33c4-4afe-b3c6-892664e64390",
+    "permissionId": "396e5961-5064-44c9-bfa1-543f76481397"
+  },
+  {
+    "roleId": "369139a1-33c4-4afe-b3c6-892664e64390",
+    "permissionId": "a0b0ef91-9ac0-49ab-8e5f-b4de5852a589"
+  },
+  {
+    "roleId": "369139a1-33c4-4afe-b3c6-892664e64390",
+    "permissionId": "cc70ee06-9da9-456e-929c-bac4cef06cc6"
+  },
+  {
+    "roleId": "369139a1-33c4-4afe-b3c6-892664e64390",
+    "permissionId": "3b4665a8-b4b6-4d92-90f6-abf2e1162a7a"
+  },
+  {
+    "roleId": "369139a1-33c4-4afe-b3c6-892664e64390",
+    "permissionId": "7de98e13-3d0d-40c8-bb5b-c12e46bd7a8d"
+  },
+  {
+    "roleId": "369139a1-33c4-4afe-b3c6-892664e64390",
+    "permissionId": "97f07e97-0027-4cab-8e49-5562767439c5"
+  },
+  {
+    "roleId": "369139a1-33c4-4afe-b3c6-892664e64390",
+    "permissionId": "8623db04-36db-460e-b703-f84168f3680a"
+  },
+  {
+    "roleId": "369139a1-33c4-4afe-b3c6-892664e64390",
+    "permissionId": "0855c4a1-8043-4f31-ba6d-723b294d9cb0"
+  },
+  {
+    "roleId": "369139a1-33c4-4afe-b3c6-892664e64390",
+    "permissionId": "210883e1-77fe-457b-aef9-74d712e9388c"
+  },
+  {
+    "roleId": "369139a1-33c4-4afe-b3c6-892664e64390",
+    "permissionId": "f335fef0-bb50-4909-97ec-f9fbfe69c7aa"
+  },
+  {
+    "roleId": "369139a1-33c4-4afe-b3c6-892664e64390",
+    "permissionId": "b8b15905-ed47-48c4-9693-f9edf5ae43be"
+  },
+  {
+    "roleId": "369139a1-33c4-4afe-b3c6-892664e64390",
+    "permissionId": "bea587e5-bab4-40e9-87aa-d35bf123ad26"
+  },
+  {
+    "roleId": "369139a1-33c4-4afe-b3c6-892664e64390",
+    "permissionId": "faf9a93a-75e0-453a-9eff-83c8f0d7a959"
+  },
+  {
+    "roleId": "369139a1-33c4-4afe-b3c6-892664e64390",
+    "permissionId": "d3a16529-51c3-4187-8210-da524a651710"
+  },
+  {
+    "roleId": "369139a1-33c4-4afe-b3c6-892664e64390",
+    "permissionId": "9ca64074-70f0-4c7a-b6f9-be3e92aca238"
+  },
+  {
+    "roleId": "369139a1-33c4-4afe-b3c6-892664e64390",
+    "permissionId": "3357ef65-c65b-443f-a78d-dbda143c508a"
+  },
+  {
+    "roleId": "369139a1-33c4-4afe-b3c6-892664e64390",
+    "permissionId": "4af80f48-13dc-4801-8139-a51e37dd8599"
+  },
+  {
+    "roleId": "f8eea623-4203-4046-92e4-c4847776e491",
+    "permissionId": "d0f9b297-ca60-40e1-adfb-b945444af446"
+  },
+  {
+    "roleId": "f8eea623-4203-4046-92e4-c4847776e491",
+    "permissionId": "b8c1d591-5586-42ef-b653-4710d621075d"
+  },
+  {
+    "roleId": "f8eea623-4203-4046-92e4-c4847776e491",
+    "permissionId": "b173c106-93f4-4984-8f7b-911b624de675"
+  },
+  {
+    "roleId": "f8eea623-4203-4046-92e4-c4847776e491",
+    "permissionId": "aa08b384-0389-4899-be8b-5976a5f3ef3a"
+  },
+  {
+    "roleId": "f8eea623-4203-4046-92e4-c4847776e491",
+    "permissionId": "f573ef94-739b-4347-86b2-cd712bb37b17"
+  },
+  {
+    "roleId": "f8eea623-4203-4046-92e4-c4847776e491",
+    "permissionId": "4cf82bbd-3e14-4f0e-b6d8-f16928cae007"
+  },
+  {
+    "roleId": "f8eea623-4203-4046-92e4-c4847776e491",
+    "permissionId": "7acf7cfd-833a-4df7-bacc-0e1644d13201"
+  },
+  {
+    "roleId": "f8eea623-4203-4046-92e4-c4847776e491",
+    "permissionId": "b2b530f0-e790-45c2-90c1-5a29aa59010c"
+  },
+  {
+    "roleId": "f8eea623-4203-4046-92e4-c4847776e491",
+    "permissionId": "51caccc8-1855-4703-8e7a-f02432a7d489"
+  },
+  {
+    "roleId": "f8eea623-4203-4046-92e4-c4847776e491",
+    "permissionId": "396e5961-5064-44c9-bfa1-543f76481397"
+  },
+  {
+    "roleId": "f8eea623-4203-4046-92e4-c4847776e491",
+    "permissionId": "a0b0ef91-9ac0-49ab-8e5f-b4de5852a589"
+  },
+  {
+    "roleId": "f8eea623-4203-4046-92e4-c4847776e491",
+    "permissionId": "7de98e13-3d0d-40c8-bb5b-c12e46bd7a8d"
+  },
+  {
+    "roleId": "f8eea623-4203-4046-92e4-c4847776e491",
+    "permissionId": "cc70ee06-9da9-456e-929c-bac4cef06cc6"
+  },
+  {
+    "roleId": "f8eea623-4203-4046-92e4-c4847776e491",
+    "permissionId": "faf9a93a-75e0-453a-9eff-83c8f0d7a959"
+  },
+  {
+    "roleId": "6596ff2c-e2b2-4703-9c7b-5b4d0376a597",
+    "permissionId": "d0f9b297-ca60-40e1-adfb-b945444af446"
+  },
+  {
+    "roleId": "6596ff2c-e2b2-4703-9c7b-5b4d0376a597",
+    "permissionId": "b8c1d591-5586-42ef-b653-4710d621075d"
+  },
+  {
+    "roleId": "6596ff2c-e2b2-4703-9c7b-5b4d0376a597",
+    "permissionId": "b173c106-93f4-4984-8f7b-911b624de675"
+  },
+  {
+    "roleId": "6596ff2c-e2b2-4703-9c7b-5b4d0376a597",
+    "permissionId": "aa08b384-0389-4899-be8b-5976a5f3ef3a"
+  },
+  {
+    "roleId": "6596ff2c-e2b2-4703-9c7b-5b4d0376a597",
+    "permissionId": "f573ef94-739b-4347-86b2-cd712bb37b17"
+  },
+  {
+    "roleId": "6596ff2c-e2b2-4703-9c7b-5b4d0376a597",
+    "permissionId": "4cf82bbd-3e14-4f0e-b6d8-f16928cae007"
+  },
+  {
+    "roleId": "6596ff2c-e2b2-4703-9c7b-5b4d0376a597",
+    "permissionId": "7acf7cfd-833a-4df7-bacc-0e1644d13201"
+  },
+  {
+    "roleId": "6596ff2c-e2b2-4703-9c7b-5b4d0376a597",
+    "permissionId": "b2b530f0-e790-45c2-90c1-5a29aa59010c"
+  },
+  {
+    "roleId": "6596ff2c-e2b2-4703-9c7b-5b4d0376a597",
+    "permissionId": "51caccc8-1855-4703-8e7a-f02432a7d489"
+  },
+  {
+    "roleId": "6596ff2c-e2b2-4703-9c7b-5b4d0376a597",
+    "permissionId": "396e5961-5064-44c9-bfa1-543f76481397"
+  },
+  {
+    "roleId": "6596ff2c-e2b2-4703-9c7b-5b4d0376a597",
+    "permissionId": "a0b0ef91-9ac0-49ab-8e5f-b4de5852a589"
+  },
+  {
+    "roleId": "6596ff2c-e2b2-4703-9c7b-5b4d0376a597",
+    "permissionId": "3b4665a8-b4b6-4d92-90f6-abf2e1162a7a"
+  },
+  {
+    "roleId": "6596ff2c-e2b2-4703-9c7b-5b4d0376a597",
+    "permissionId": "7de98e13-3d0d-40c8-bb5b-c12e46bd7a8d"
+  },
+  {
+    "roleId": "6596ff2c-e2b2-4703-9c7b-5b4d0376a597",
+    "permissionId": "cc70ee06-9da9-456e-929c-bac4cef06cc6"
+  },
+  {
+    "roleId": "6596ff2c-e2b2-4703-9c7b-5b4d0376a597",
+    "permissionId": "b8b15905-ed47-48c4-9693-f9edf5ae43be"
+  },
+  {
+    "roleId": "6596ff2c-e2b2-4703-9c7b-5b4d0376a597",
+    "permissionId": "dd8c7cf9-ebcb-4aaa-b38d-c1aa33c0e5ac"
+  },
+  {
+    "roleId": "6596ff2c-e2b2-4703-9c7b-5b4d0376a597",
+    "permissionId": "87361790-a9bd-4fca-b88f-ba9a6b10c09c"
+  },
+  {
+    "roleId": "6596ff2c-e2b2-4703-9c7b-5b4d0376a597",
+    "permissionId": "d686d2e5-833c-45d2-b6a9-71b6e6724ec7"
+  },
+  {
+    "roleId": "b34cd6fe-815b-4417-abb5-33092c80790b",
+    "permissionId": "d0f9b297-ca60-40e1-adfb-b945444af446"
+  },
+  {
+    "roleId": "b34cd6fe-815b-4417-abb5-33092c80790b",
+    "permissionId": "b8c1d591-5586-42ef-b653-4710d621075d"
+  },
+  {
+    "roleId": "b34cd6fe-815b-4417-abb5-33092c80790b",
+    "permissionId": "b173c106-93f4-4984-8f7b-911b624de675"
+  },
+  {
+    "roleId": "b34cd6fe-815b-4417-abb5-33092c80790b",
+    "permissionId": "aa08b384-0389-4899-be8b-5976a5f3ef3a"
+  },
+  {
+    "roleId": "b34cd6fe-815b-4417-abb5-33092c80790b",
+    "permissionId": "f573ef94-739b-4347-86b2-cd712bb37b17"
+  },
+  {
+    "roleId": "b34cd6fe-815b-4417-abb5-33092c80790b",
+    "permissionId": "4cf82bbd-3e14-4f0e-b6d8-f16928cae007"
+  },
+  {
+    "roleId": "b34cd6fe-815b-4417-abb5-33092c80790b",
+    "permissionId": "7acf7cfd-833a-4df7-bacc-0e1644d13201"
+  },
+  {
+    "roleId": "b34cd6fe-815b-4417-abb5-33092c80790b",
+    "permissionId": "b2b530f0-e790-45c2-90c1-5a29aa59010c"
+  },
+  {
+    "roleId": "b34cd6fe-815b-4417-abb5-33092c80790b",
+    "permissionId": "51caccc8-1855-4703-8e7a-f02432a7d489"
+  },
+  {
+    "roleId": "b34cd6fe-815b-4417-abb5-33092c80790b",
+    "permissionId": "396e5961-5064-44c9-bfa1-543f76481397"
+  },
+  {
+    "roleId": "b34cd6fe-815b-4417-abb5-33092c80790b",
+    "permissionId": "a0b0ef91-9ac0-49ab-8e5f-b4de5852a589"
+  },
+  {
+    "roleId": "b34cd6fe-815b-4417-abb5-33092c80790b",
+    "permissionId": "7de98e13-3d0d-40c8-bb5b-c12e46bd7a8d"
+  },
+  {
+    "roleId": "b34cd6fe-815b-4417-abb5-33092c80790b",
+    "permissionId": "faf9a93a-75e0-453a-9eff-83c8f0d7a959"
+  },
+  {
+    "roleId": "9db2a33d-0e88-4c6d-b6e3-061abb2e7dcb",
+    "permissionId": "d0f9b297-ca60-40e1-adfb-b945444af446"
+  },
+  {
+    "roleId": "9db2a33d-0e88-4c6d-b6e3-061abb2e7dcb",
+    "permissionId": "b8c1d591-5586-42ef-b653-4710d621075d"
+  },
+  {
+    "roleId": "9db2a33d-0e88-4c6d-b6e3-061abb2e7dcb",
+    "permissionId": "b173c106-93f4-4984-8f7b-911b624de675"
+  },
+  {
+    "roleId": "9db2a33d-0e88-4c6d-b6e3-061abb2e7dcb",
+    "permissionId": "aa08b384-0389-4899-be8b-5976a5f3ef3a"
+  },
+  {
+    "roleId": "9db2a33d-0e88-4c6d-b6e3-061abb2e7dcb",
+    "permissionId": "f573ef94-739b-4347-86b2-cd712bb37b17"
+  },
+  {
+    "roleId": "9db2a33d-0e88-4c6d-b6e3-061abb2e7dcb",
+    "permissionId": "4cf82bbd-3e14-4f0e-b6d8-f16928cae007"
+  },
+  {
+    "roleId": "9db2a33d-0e88-4c6d-b6e3-061abb2e7dcb",
+    "permissionId": "7acf7cfd-833a-4df7-bacc-0e1644d13201"
+  },
+  {
+    "roleId": "9db2a33d-0e88-4c6d-b6e3-061abb2e7dcb",
+    "permissionId": "b2b530f0-e790-45c2-90c1-5a29aa59010c"
+  },
+  {
+    "roleId": "9db2a33d-0e88-4c6d-b6e3-061abb2e7dcb",
+    "permissionId": "51caccc8-1855-4703-8e7a-f02432a7d489"
+  },
+  {
+    "roleId": "9db2a33d-0e88-4c6d-b6e3-061abb2e7dcb",
+    "permissionId": "396e5961-5064-44c9-bfa1-543f76481397"
+  },
+  {
+    "roleId": "9db2a33d-0e88-4c6d-b6e3-061abb2e7dcb",
+    "permissionId": "a0b0ef91-9ac0-49ab-8e5f-b4de5852a589"
+  },
+  {
+    "roleId": "9db2a33d-0e88-4c6d-b6e3-061abb2e7dcb",
+    "permissionId": "3b4665a8-b4b6-4d92-90f6-abf2e1162a7a"
+  },
+  {
+    "roleId": "9db2a33d-0e88-4c6d-b6e3-061abb2e7dcb",
+    "permissionId": "87361790-a9bd-4fca-b88f-ba9a6b10c09c"
+  },
+  {
+    "roleId": "9db2a33d-0e88-4c6d-b6e3-061abb2e7dcb",
+    "permissionId": "d686d2e5-833c-45d2-b6a9-71b6e6724ec7"
+  },
+  {
+    "roleId": "6aa15071-fd40-42d7-8026-bf8c1fd7f430",
+    "permissionId": "d0f9b297-ca60-40e1-adfb-b945444af446"
+  },
+  {
+    "roleId": "6aa15071-fd40-42d7-8026-bf8c1fd7f430",
+    "permissionId": "b8c1d591-5586-42ef-b653-4710d621075d"
+  },
+  {
+    "roleId": "6aa15071-fd40-42d7-8026-bf8c1fd7f430",
+    "permissionId": "b173c106-93f4-4984-8f7b-911b624de675"
+  },
+  {
+    "roleId": "6aa15071-fd40-42d7-8026-bf8c1fd7f430",
+    "permissionId": "aa08b384-0389-4899-be8b-5976a5f3ef3a"
+  },
+  {
+    "roleId": "6aa15071-fd40-42d7-8026-bf8c1fd7f430",
+    "permissionId": "f573ef94-739b-4347-86b2-cd712bb37b17"
+  },
+  {
+    "roleId": "6aa15071-fd40-42d7-8026-bf8c1fd7f430",
+    "permissionId": "4cf82bbd-3e14-4f0e-b6d8-f16928cae007"
+  },
+  {
+    "roleId": "6aa15071-fd40-42d7-8026-bf8c1fd7f430",
+    "permissionId": "7acf7cfd-833a-4df7-bacc-0e1644d13201"
+  },
+  {
+    "roleId": "6aa15071-fd40-42d7-8026-bf8c1fd7f430",
+    "permissionId": "b2b530f0-e790-45c2-90c1-5a29aa59010c"
+  },
+  {
+    "roleId": "6aa15071-fd40-42d7-8026-bf8c1fd7f430",
+    "permissionId": "51caccc8-1855-4703-8e7a-f02432a7d489"
+  },
+  {
+    "roleId": "6aa15071-fd40-42d7-8026-bf8c1fd7f430",
+    "permissionId": "396e5961-5064-44c9-bfa1-543f76481397"
+  },
+  {
+    "roleId": "6aa15071-fd40-42d7-8026-bf8c1fd7f430",
+    "permissionId": "a0b0ef91-9ac0-49ab-8e5f-b4de5852a589"
+  },
+  {
+    "roleId": "6aa15071-fd40-42d7-8026-bf8c1fd7f430",
+    "permissionId": "77c21da2-5215-4502-bcae-c9bc4ff1c780"
+  },
+  {
+    "roleId": "6aa15071-fd40-42d7-8026-bf8c1fd7f430",
+    "permissionId": "8cb737cc-7155-4297-8ce8-8d8c57408878"
+  },
+  {
+    "roleId": "6aa15071-fd40-42d7-8026-bf8c1fd7f430",
+    "permissionId": "8623db04-36db-460e-b703-f84168f3680a"
+  },
+  {
+    "roleId": "6aa15071-fd40-42d7-8026-bf8c1fd7f430",
+    "permissionId": "cc70ee06-9da9-456e-929c-bac4cef06cc6"
+  },
+  {
+    "roleId": "6aa15071-fd40-42d7-8026-bf8c1fd7f430",
+    "permissionId": "3357ef65-c65b-443f-a78d-dbda143c508a"
+  },
+  {
+    "roleId": "6aa15071-fd40-42d7-8026-bf8c1fd7f430",
+    "permissionId": "9ca64074-70f0-4c7a-b6f9-be3e92aca238"
+  },
+  {
+    "roleId": "d3c15b97-c9bd-42f1-803a-cff8ffb0ef97",
+    "permissionId": "d0f9b297-ca60-40e1-adfb-b945444af446"
+  },
+  {
+    "roleId": "d3c15b97-c9bd-42f1-803a-cff8ffb0ef97",
+    "permissionId": "b8c1d591-5586-42ef-b653-4710d621075d"
+  },
+  {
+    "roleId": "d3c15b97-c9bd-42f1-803a-cff8ffb0ef97",
+    "permissionId": "b173c106-93f4-4984-8f7b-911b624de675"
+  },
+  {
+    "roleId": "d3c15b97-c9bd-42f1-803a-cff8ffb0ef97",
+    "permissionId": "aa08b384-0389-4899-be8b-5976a5f3ef3a"
+  },
+  {
+    "roleId": "d3c15b97-c9bd-42f1-803a-cff8ffb0ef97",
+    "permissionId": "f573ef94-739b-4347-86b2-cd712bb37b17"
+  },
+  {
+    "roleId": "d3c15b97-c9bd-42f1-803a-cff8ffb0ef97",
+    "permissionId": "4cf82bbd-3e14-4f0e-b6d8-f16928cae007"
+  },
+  {
+    "roleId": "d3c15b97-c9bd-42f1-803a-cff8ffb0ef97",
+    "permissionId": "7acf7cfd-833a-4df7-bacc-0e1644d13201"
+  },
+  {
+    "roleId": "d3c15b97-c9bd-42f1-803a-cff8ffb0ef97",
+    "permissionId": "b2b530f0-e790-45c2-90c1-5a29aa59010c"
+  },
+  {
+    "roleId": "d3c15b97-c9bd-42f1-803a-cff8ffb0ef97",
+    "permissionId": "51caccc8-1855-4703-8e7a-f02432a7d489"
+  },
+  {
+    "roleId": "d3c15b97-c9bd-42f1-803a-cff8ffb0ef97",
+    "permissionId": "396e5961-5064-44c9-bfa1-543f76481397"
+  },
+  {
+    "roleId": "d3c15b97-c9bd-42f1-803a-cff8ffb0ef97",
+    "permissionId": "a0b0ef91-9ac0-49ab-8e5f-b4de5852a589"
+  }
+]

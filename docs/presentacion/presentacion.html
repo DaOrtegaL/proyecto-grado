@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MSH-CLM — Presentación del proyecto</title>
+<style>
+  :root { --bg:#0f172a; --panel:#1e293b; --line:#334155; --txt:#e2e8f0; --mut:#94a3b8; --acc:#38bdf8; --ok:#34d399; --warn:#fbbf24; --bad:#f87171; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; height:100%; background:var(--bg); color:var(--txt); font-family:'Segoe UI', system-ui, sans-serif; overflow:hidden; }
+  .slide { position:absolute; inset:0; padding:4vh 6vw 8vh; display:none; flex-direction:column; justify-content:flex-start; overflow:auto; }
+  .slide.active { display:flex; }
+  h1 { font-size:clamp(2rem,4.6vw,3.6rem); margin:0 0 .4em; line-height:1.1; }
+  h2 { font-size:clamp(1.5rem,3vw,2.4rem); margin:0 0 .6em; color:var(--acc); }
+  h3 { font-size:clamp(1rem,1.6vw,1.3rem); margin:.2em 0 .4em; color:var(--txt); }
+  p, li { font-size:clamp(.95rem,1.55vw,1.25rem); line-height:1.5; color:var(--txt); }
+  ul { margin:.3em 0; padding-left:1.2em; }
+  .mut { color:var(--mut); }
+  .cover { justify-content:center; }
+  .cover .tag { color:var(--acc); letter-spacing:.15em; text-transform:uppercase; font-size:.95rem; }
+  .grid { display:grid; gap:1.2vw; }
+  .g2 { grid-template-columns:repeat(2,1fr); } .g3 { grid-template-columns:repeat(3,1fr); } .g4 { grid-template-columns:repeat(4,1fr); }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:1.1vw 1.3vw; }
+  .card h3 { margin-top:0; color:var(--acc); }
+  .kpi { text-align:center; } .kpi b { display:block; font-size:clamp(1.8rem,3.6vw,3rem); color:var(--ok); } .kpi span { color:var(--mut); font-size:.95rem; }
+  .pill { display:inline-block; border:1px solid var(--line); border-radius:999px; padding:.15em .7em; margin:.15em; font-size:.95rem; background:#0b1220; }
+  .ok { color:var(--ok); } .warn { color:var(--warn); } .bad { color:var(--bad); }
+  table { border-collapse:collapse; width:100%; font-size:clamp(.85rem,1.3vw,1.1rem); }
+  th, td { border-bottom:1px solid var(--line); padding:.45em .6em; text-align:left; vertical-align:top; }
+  th { color:var(--acc); font-weight:600; }
+  code, pre { font-family:Consolas, 'Cascadia Mono', monospace; }
+  pre { background:#020617; border:1px solid var(--line); border-radius:10px; padding:1em 1.2em; font-size:clamp(.8rem,1.25vw,1.05rem); line-height:1.55; overflow:auto; color:#cbd5e1; }
+  code { background:#020617; padding:.05em .4em; border-radius:5px; color:#cbd5e1; }
+  .layer { display:grid; grid-template-columns:11em 1fr; gap:.8em; align-items:center; margin:.35em 0; }
+  .layer .name { background:var(--acc); color:#04263a; font-weight:700; border-radius:8px; padding:.55em .7em; text-align:center; font-size:.95rem; }
+  .layer .body { display:flex; flex-wrap:wrap; gap:.4em; background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:.5em .7em; }
+  .layer .body span { background:#0b1220; border:1px solid var(--line); border-radius:6px; padding:.2em .6em; font-size:.92rem; }
+  .layer .body span.off { border-style:dashed; color:var(--mut); }
+  .layer .body span.sim { border-color:var(--warn); }
+  .flow { display:flex; flex-wrap:wrap; align-items:center; gap:.4em; }
+  .flow .st { background:var(--panel); border:1px solid var(--acc); border-radius:8px; padding:.4em .7em; font-size:.95rem; }
+  .flow .ar { color:var(--mut); }
+  .flow .bad { border-color:var(--bad); } .flow .okc { border-color:var(--ok); }
+  .legend { font-size:.85rem; color:var(--mut); margin-top:.6em; }
+  .bar { position:fixed; left:0; right:0; bottom:0; height:6vh; display:flex; align-items:center; justify-content:space-between; padding:0 2vw; background:#020617; border-top:1px solid var(--line); color:var(--mut); font-size:.85rem; z-index:5; }
+  .prog { position:fixed; top:0; left:0; height:4px; background:var(--acc); z-index:6; transition:width .2s; }
+  .nav button { background:var(--panel); color:var(--txt); border:1px solid var(--line); border-radius:6px; padding:.25em .8em; cursor:pointer; }
+  .nav button:hover { border-color:var(--acc); }
+  @media print {
+    html, body { overflow:visible; background:#fff; color:#000; height:auto; }
+    .slide { position:static; display:flex !important; page-break-after:always; min-height:100vh; background:var(--bg); color:var(--txt); }
+    .bar, .prog { display:none; }
+  }
+</style>
+</head>
+<body>
+<div class="prog" id="prog"></div>
+
+<!-- 1. Portada -->
+<section class="slide cover active">
+  <div class="tag">Proyecto de grado · Ingeniería de Sistemas · UNAD</div>
+  <h1>My Store Health — Gestión centralizada del ciclo de vida de certificados X.509</h1>
+  <p class="mut">MSH-CLM · Prototipo para la autenticación mutua (mTLS) de terminales POS en tiendas de Latinoamérica</p>
+  <p class="mut">Argentina · Brasil · Chile · Colombia · México · Perú</p>
+  <p><b>David Alejandro Ortega Leon</b> · <b>Brayan Alexander Franco Cruz</b></p>
+  <p><span class="pill">Datos sintéticos de laboratorio</span><span class="pill">Modo simulación</span></p>
+  <p class="legend">Navegación: ← → o clic · F pantalla completa · Ctrl+P para exportar a PDF</p>
+</section>
+
+<!-- 2. Problema -->
+<section class="slide">
+  <h2>El problema</h2>
+  <div class="grid g2">
+    <div class="card">
+      <h3>Hoy</h3>
+      <ul>
+        <li>Renovación e instalación manual, a veces por acceso remoto a cada terminal</li>
+        <li>Sin inventario centralizado ni responsables claros</li>
+        <li>Varios emisores (PKI interna y proveedores)</li>
+        <li>Poca trazabilidad de quién instaló qué</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Riesgo</h3>
+      <ul>
+        <li>Vencimientos inesperados y fallas de autenticación mutua</li>
+        <li>Terminales POS indisponibles y servicios de pago afectados</li>
+        <li>Incidentes P1/P2 e intervenciones urgentes</li>
+        <li>Errores de instalación sin reversión</li>
+      </ul>
+    </div>
+  </div>
+  <h3 style="margin-top:1.2em">De una gestión manual y reactiva a una centralizada, preventiva, controlada y auditable</h3>
+</section>
+
+<!-- 3. Objetivo y alcance -->
+<section class="slide">
+  <h2>Objetivo y alcance</h2>
+  <p>Diseñar, desarrollar y validar un módulo, integrable con My Store Health, que <b>inventaríe, monitoree, alerte y gestione</b> la renovación e instalación controlada de certificados X.509 en terminales POS con Windows 10 IoT.</p>
+  <div class="grid g2">
+    <div class="card">
+      <h3>Incluye</h3>
+      <ul>
+        <li>Inventario por PowerShell (solo lectura)</li>
+        <li>Alertas a 60 / 30 / 15 / 7 días</li>
+        <li>Aprobación con separación de funciones</li>
+        <li>Instalación controlada, verificación y reversión</li>
+        <li>Auditoría con integridad verificable</li>
+        <li>Indicadores y evidencia experimental</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Excluye</h3>
+      <ul>
+        <li>No reemplaza las autoridades de certificación</li>
+        <li>No almacena ni transmite claves privadas</li>
+        <li>No trata datos de clientes ni de tarjetas</li>
+        <li>No ejecuta comandos arbitrarios ni operaciones destructivas</li>
+        <li>No instala en tiendas productivas sin autorización</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Stack -->
+<section class="slide">
+  <h2>Stack tecnológico</h2>
+  <div class="grid g3">
+    <div class="card"><h3>Frontend</h3>
+      <span class="pill">React 18</span><span class="pill">TypeScript</span><span class="pill">Vite</span><span class="pill">Tailwind CSS</span><span class="pill">TanStack Query / Table</span><span class="pill">Recharts</span>
+    </div>
+    <div class="card"><h3>Backend</h3>
+      <span class="pill">Node.js</span><span class="pill">NestJS</span><span class="pill">REST + Swagger</span><span class="pill">Prisma 6</span><span class="pill">SQL Server</span><span class="pill">JWT</span><span class="pill">Zod</span><span class="pill">bcrypt</span>
+    </div>
+    <div class="card"><h3>Terminal y seguridad</h3>
+      <span class="pill">Windows PowerShell 5.1</span><span class="pill">X.509 (@peculiar/x509)</span><span class="pill">Ed25519 (agentes)</span><span class="pill">SHA-256</span><span class="pill">mTLS</span>
+    </div>
+    <div class="card"><h3>Pruebas</h3>
+      <span class="pill">Jest</span><span class="pill">Supertest</span><span class="pill">Playwright</span><span class="pill">GitHub Actions</span>
+    </div>
+    <div class="card"><h3>Infraestructura</h3>
+      <span class="pill">Monorepo npm workspaces</span><span class="pill">Docker Compose</span><span class="pill">Base JSON simulada</span><span class="pill">Redis (pendiente)</span>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Arquitectura -->
+<section class="slide">
+  <h2>Arquitectura en capas</h2>
+  <div class="layer"><div class="name">Presentación</div><div class="body"><span>React · 15 pantallas</span><span>Rutas protegidas por permiso</span><span>Tema claro / oscuro</span></div></div>
+  <div class="layer"><div class="name">API (NestJS)</div><div class="body"><span>Autenticación JWT + refresco rotatorio</span><span>RBAC: 8 roles · 33 permisos</span><span>Validación Zod</span><span>Límite de tasa · helmet</span></div></div>
+  <div class="layer"><div class="name">Servicios de negocio</div><div class="body"><span>Inventario</span><span>Alertas</span><span>Anomalías</span><span>Responsables</span><span>Renovaciones</span><span>Aprobaciones</span><span>Instalaciones</span><span>Auditoría</span><span>Indicadores</span><span>Simulador</span></div></div>
+  <div class="layer"><div class="name">Dominio (puro)</div><div class="body"><span>Vigencia</span><span>Umbrales de alerta</span><span>Máquina de estados</span><span>Huella de aprobación</span><span>Reglas de anomalías</span><span>Cadena de auditoría</span><span>Firma de agente</span></div></div>
+  <div class="layer"><div class="name">Adaptadores</div><div class="body"><span>Terminal simulada</span><span class="sim">Emisor simulado</span><span class="sim">Ejecutor de instalación simulado</span><span class="sim">MSH (contrato propuesto)</span><span class="off">Windows remoto (deshabilitado)</span></div></div>
+  <div class="layer"><div class="name">Persistencia</div><div class="body"><span>SQL Server (Prisma) · 47 entidades</span><span>o</span><span>Archivos JSON (<code>MOCK_DATABASE=1</code>)</span></div></div>
+  <div class="layer"><div class="name">Terminal POS</div><div class="body"><span>Script PowerShell de solo lectura</span><span>Agente con identidad Ed25519</span><span>Almacén de certificados de Windows</span></div></div>
+  <p class="legend">Borde amarillo = implementación simulada · borde punteado = deshabilitado hasta contar con autorización</p>
+</section>
+
+<!-- 6. Seguridad -->
+<section class="slide">
+  <h2>Seguridad desde el diseño</h2>
+  <table>
+    <tr><th>Control</th><th>Cómo se logra</th></tr>
+    <tr><td>Sin claves privadas (RNF01)</td><td>Solo metadatos públicos; <code>hasPrivateKey</code> es un booleano; pruebas estáticas lo comprueban</td></tr>
+    <tr><td>Mínimo privilegio (RNF02)</td><td>Permisos validados en el servidor; las denegaciones se auditan</td></tr>
+    <tr><td>Separación de funciones</td><td>Quien solicita no aprueba; quien aprueba no ejecuta</td></tr>
+    <tr><td>Aprobación a prueba de cambios</td><td>Huella SHA-256 de certificado, terminales, ventana y responsable; si cambia, se invalida</td></tr>
+    <tr><td>Identidad de agentes</td><td>Firma Ed25519, marca de tiempo, nonce único y terminal asociada</td></tr>
+    <tr><td>Auditoría íntegra (RNF06)</td><td>Hash encadenado verificable desde la interfaz</td></tr>
+    <tr><td>Scripts firmados (RNF04)</td><td>Verificador que rechaza scripts sin firma, alterados o de firmantes no autorizados</td></tr>
+    <tr><td>Modo laboratorio</td><td>Deshabilitado por defecto; la instalación real exige autorización</td></tr>
+  </table>
+</section>
+
+<!-- 7. Flujo -->
+<section class="slide">
+  <h2>Flujo de renovación controlada</h2>
+  <div class="flow">
+    <div class="st">Inventario</div><span class="ar">→</span><div class="st">Alerta</div><span class="ar">→</span><div class="st">Solicitud</div><span class="ar">→</span><div class="st">Emisión con evidencia</div><span class="ar">→</span><div class="st">Aprobación</div><span class="ar">→</span><div class="st">Ventana de mantenimiento</div><span class="ar">→</span><div class="st">Instalación</div><span class="ar">→</span><div class="st">Verificación</div><span class="ar">→</span><div class="st okc">Completado</div>
+  </div>
+  <div class="flow" style="margin-top:1em">
+    <div class="st">Instalación</div><span class="ar">→</span><div class="st bad">Falla</div><span class="ar">→</span><div class="st">Reversión</div><span class="ar">→</span><div class="st">Estado anterior restaurado + auditoría</div>
+  </div>
+  <div class="grid g3" style="margin-top:1.4em">
+    <div class="card"><h3>Quién hace qué</h3><p>Retail IT solicita y programa · PKI emite · Responsable del emisor aprueba · Soporte ejecuta · Auditor revisa</p></div>
+    <div class="card"><h3>Controles</h3><p>Transiciones válidas únicamente, idempotencia, ventana válida, aprobación vigente y reversión independiente</p></div>
+    <div class="card"><h3>Trazabilidad</h3><p>Cada paso deja usuario, estado anterior y posterior, motivo y correlación en la auditoría</p></div>
+  </div>
+</section>
+
+<!-- 8. Estado -->
+<section class="slide">
+  <h2>Estado del proyecto</h2>
+  <div class="grid g4">
+    <div class="card kpi"><b>12 / 12</b><span>RF implementados</span></div>
+    <div class="card kpi"><b>10</b><span>RNF abordados (3 parciales)</span></div>
+    <div class="card kpi"><b>16</b><span>escenarios del simulador</span></div>
+    <div class="card kpi"><b>139</b><span>pruebas automatizadas aprobadas</span></div>
+    <div class="card kpi"><b>5</b><span>flujos E2E en navegador</span></div>
+    <div class="card kpi"><b>47</b><span>entidades de datos</span></div>
+    <div class="card kpi"><b>54</b><span>terminales sintéticas</span></div>
+  </div>
+  <p class="legend">139 = dominio 42 + base JSON 10 + simulador 4 + API 67 + integración y seguridad 11 + E2E 5. Los RNF parciales: 03 (TLS en despliegue), 04 (falta ejecutor real que exija la firma) y 09 (sin probar en Windows 10 IoT).</p>
+  <div class="grid g2" style="margin-top:.8em">
+    <div class="card"><h3 class="ok">Verificado</h3><ul><li>Todo el flujo en modo simulación con base JSON</li><li>Script PowerShell real en Windows PowerShell 5.1</li><li>Flujos completos en navegador (Playwright)</li></ul></div>
+    <div class="card"><h3 class="warn">Pendiente</h3><ul><li>Verificar la ruta con SQL Server (sin Docker)</li><li>Colas BullMQ / Redis</li><li>Laboratorio autorizado y adaptadores reales</li><li>Datos reales de línea base y piloto</li></ul></div>
+  </div>
+</section>
+
+<!-- 9. Puesta en funcionamiento -->
+<section class="slide">
+  <h2>Puesta en funcionamiento</h2>
+  <h3>Requisitos: Node.js ≥ 20 · npm ≥ 10 · no requiere Docker en modo simulación</h3>
+<pre>cd proyecto-grado
+Copy-Item .env.example .env       # MOCK_DATABASE=1 · defina JWT_ACCESS_SECRET y JWT_REFRESH_SECRET (≥ 32 caracteres)
+npm install
+npx prisma generate
+npm run build:libs
+npm run mock:reset                # datos de ejemplo en mock-database/ (fechas relativas a hoy)
+npm run build -w @msh/api
+npm run start -w @msh/api         # API  → http://localhost:3000   (Swagger: /api/docs)
+npm run dev:web                   # Web  → http://localhost:5173</pre>
+  <div class="grid g2">
+    <div class="card"><h3>Variable clave: <code>MOCK_DATABASE</code></h3><p><code>1</code> = carpeta <code>mock-database/</code> (47 archivos JSON, sin Docker)<br><code>0</code> = SQL Server con <code>docker compose up --build</code> <span class="warn">(no verificado)</span></p></div>
+    <div class="card"><h3>Comprobación</h3><p><code>GET /api/v1/health</code> debe responder <code>"database":"MOCK_JSON"</code>, <code>"executionMode":"SIMULATION"</code> y <code>"labModeEnabled":false</code>.</p></div>
+  </div>
+</section>
+
+<!-- 10. Pruebas -->
+<section class="slide">
+  <h2>Cómo se verifica</h2>
+<pre>npm run test:unit          # dominio, base JSON, simulador y API (flujos completos)
+npm run test:integration   # script PowerShell real, firma de scripts, claves privadas
+npx playwright install chromium
+npm run test:e2e           # E2E01–E2E05 en navegador</pre>
+  <table>
+    <tr><th>E2E</th><th>Flujo</th></tr>
+    <tr><td>E2E01</td><td>Renovación exitosa: inventario → solicitud → emisión → aprobación → instalación → verificación → auditoría</td></tr>
+    <tr><td>E2E02</td><td>Rechazo y registro de auditoría</td></tr>
+    <tr><td>E2E03</td><td>Falla de verificación, reversión y auditoría</td></tr>
+    <tr><td>E2E04</td><td>Intento no autorizado: bloqueo y evento de auditoría</td></tr>
+    <tr><td>E2E05</td><td>Línea base, piloto, comparación y exportación de evidencias</td></tr>
+  </table>
+</section>
+
+<!-- 11. Usuarios -->
+<section class="slide">
+  <h2>Usuarios para la demostración</h2>
+  <p class="mut">Contraseña de todos: <code>Laboratorio_2026_Lab</code> (variable <code>SEED_LAB_PASSWORD</code>) · Pestaña normal + pestaña de incógnito para alternar usuarios</p>
+  <table>
+    <tr><th>Usuario</th><th>Rol</th><th>Función en la demo</th></tr>
+    <tr><td><code>retailit@msh.lab</code></td><td>Retail IT</td><td>Inventaría, solicita y programa</td></tr>
+    <tr><td><code>pki@msh.lab</code></td><td>Administrador PKI</td><td>Emite, crea ventanas, asigna responsables</td></tr>
+    <tr><td><code>emisor@msh.lab</code></td><td>Responsable del emisor</td><td>Aprueba o rechaza</td></tr>
+    <tr><td><code>soporte@msh.lab</code></td><td>Soporte de tiendas</td><td>Ejecuta y revierte</td></tr>
+    <tr><td><code>auditor@msh.lab</code></td><td>Auditor</td><td>Panel, auditoría y evidencia</td></tr>
+    <tr><td><code>admin@msh.lab</code></td><td>Administrador</td><td>Indicadores, simulador, inyección de fallas</td></tr>
+    <tr><td><code>consulta@msh.lab</code></td><td>Consulta</td><td>Demuestra el mínimo privilegio</td></tr>
+  </table>
+</section>
+
+<!-- 12. Agenda demo -->
+<section class="slide">
+  <h2>Demostración — recorrido</h2>
+  <table>
+    <tr><th>#</th><th>Bloque</th><th>Requisitos</th><th>Dónde</th></tr>
+    <tr><td>1</td><td>Panel de control y aviso de datos sintéticos</td><td>RF11, RNF06</td><td>Panel de control</td></tr>
+    <tr><td>2</td><td>Inventario automatizado y evidencia</td><td>RF01, RF02, RNF01</td><td>Tiendas y terminales</td></tr>
+    <tr><td>3</td><td>Consulta regional y vigencia</td><td>RF02, RF04</td><td>Inventario de certificados</td></tr>
+    <tr><td>4</td><td>Alertas y responsables</td><td>RF03, RF05</td><td>Alertas · Administración</td></tr>
+    <tr><td>5</td><td>Renovación controlada completa y separación de funciones</td><td>RF06–RF08, RNF02</td><td>Renovaciones · Aprobaciones · Instalaciones</td></tr>
+    <tr><td>6</td><td>Falla de verificación y reversión</td><td>RF08, RF09</td><td>Instalaciones</td></tr>
+    <tr><td>7</td><td>Auditoría y verificación de integridad</td><td>RF10, RNF06</td><td>Auditoría</td></tr>
+    <tr><td>8</td><td>Anomalías y mínimo privilegio</td><td>RF12, RNF02</td><td>Seguridad y anomalías</td></tr>
+    <tr><td>9</td><td>Indicadores, SUS, simulador y trazabilidad</td><td>RNF08, OE05</td><td>Indicadores · Simulador · Evidencia</td></tr>
+  </table>
+  <p class="legend">Antes de empezar: <code>npm run mock:reset</code>. Terminales preparadas: <code>POS-AR-001-01</code> (renovación), <code>POS-AR-002-01</code> (rechazo), <code>POS-AR-002-03</code> (falla y reversión), <code>POS-AR-003-01</code> (7 días), <code>POS-AR-003-03</code> (vencido).</p>
+</section>
+
+<!-- 13. Limitaciones -->
+<section class="slide">
+  <h2>Alcance real y limitaciones</h2>
+  <div class="grid g2">
+    <div class="card"><h3>Importante aclarar</h3>
+      <ul>
+        <li>Todos los datos y resultados son <b>sintéticos</b>; no evidencian el efecto en tiendas reales</li>
+        <li>My Store Health: contrato propuesto con implementación simulada</li>
+        <li>Notificaciones solo internas (sin correo)</li>
+        <li>La verificación comprueba el reinventario, no un handshake mTLS real</li>
+        <li>No se declara TRL ni significancia estadística</li>
+      </ul>
+    </div>
+    <div class="card"><h3>Próximos pasos</h3>
+      <ul>
+        <li>Verificar con SQL Server</li>
+        <li>Autorización para un laboratorio real y mecanismo remoto aprobado</li>
+        <li>Línea base real (inventario, tickets, incidentes) y muestra efectiva</li>
+        <li>Cola con reintentos (BullMQ / Redis)</li>
+        <li>Piloto controlado y medición de indicadores</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 14. Cierre -->
+<section class="slide cover">
+  <h1>Pasemos a la demostración</h1>
+  <p class="mut">http://localhost:5173 · usuario <code>admin@msh.lab</code></p>
+  <p class="mut">Documentación completa en <code>docs/</code> · estado en <code>ESTADO_DESARROLLO.md</code></p>
+</section>
+
+<div class="bar">
+  <span id="title">MSH-CLM</span>
+  <span class="nav"><button id="prev" aria-label="Anterior">←</button> <span id="count"></span> <button id="next" aria-label="Siguiente">→</button></span>
+</div>
+
+<script>
+  const slides = [...document.querySelectorAll('.slide')];
+  let i = Math.min(Math.max(parseInt(location.hash.slice(1) || '1', 10) - 1, 0), slides.length - 1);
+  const show = (n) => {
+    i = Math.min(Math.max(n, 0), slides.length - 1);
+    slides.forEach((s, k) => s.classList.toggle('active', k === i));
+    document.getElementById('count').textContent = `${i + 1} / ${slides.length}`;
+    document.getElementById('prog').style.width = `${((i + 1) / slides.length) * 100}%`;
+    const h = slides[i].querySelector('h1, h2');
+    document.getElementById('title').textContent = h ? h.textContent : 'MSH-CLM';
+    history.replaceState(null, '', `#${i + 1}`);
+  };
+  document.getElementById('prev').onclick = () => show(i - 1);
+  document.getElementById('next').onclick = () => show(i + 1);
+  document.addEventListener('keydown', (e) => {
+    if (['ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); show(i + 1); }
+    else if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); show(i - 1); }
+    else if (e.key === 'Home') show(0);
+    else if (e.key === 'End') show(slides.length - 1);
+    else if (e.key.toLowerCase() === 'f') document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+  });
+  document.addEventListener('click', (e) => { if (!e.target.closest('.bar, pre, a, button')) show(e.clientX > innerWidth / 2 ? i + 1 : i - 1); });
+  show(i);
+</script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+[
+  {
+    "id": "011555e7-abe5-45aa-ba7b-b9d6ac355e4b",
+    "key": "approval.separationOfDuties",
+    "value": "true",
+    "description": "El solicitante no puede aprobar su propia solicitud.",
+    "updatedAt": "2026-11-23T02:38:26.416Z"
+  },
+  {
+    "id": "4d2436a4-fe21-4dac-a40e-7b1fd1051578",
+    "key": "approval.validityHours",
+    "value": "48",
+    "description": "Horas de vigencia de una aprobación.",
+    "updatedAt": "2026-11-23T02:38:26.416Z"
+  }
+]

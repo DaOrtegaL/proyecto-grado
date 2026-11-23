@@ -1,0 +1,34 @@
+[
+  {
+    "userId": "3fe107a3-1f38-4e83-9594-e9dc57645873",
+    "roleId": "0b2fe6db-a969-4493-8a1a-40b58dc02018"
+  },
+  {
+    "userId": "26ca30e5-0b72-4f12-abe9-41ff2b06998d",
+    "roleId": "369139a1-33c4-4afe-b3c6-892664e64390"
+  },
+  {
+    "userId": "2af4e7a7-25af-4f49-b3f7-3eb67a540942",
+    "roleId": "f8eea623-4203-4046-92e4-c4847776e491"
+  },
+  {
+    "userId": "7ffcd4bc-1207-4187-a8e6-e785265bf763",
+    "roleId": "6596ff2c-e2b2-4703-9c7b-5b4d0376a597"
+  },
+  {
+    "userId": "567272f7-f345-47e7-87eb-6dfdd9dc2bf0",
+    "roleId": "b34cd6fe-815b-4417-abb5-33092c80790b"
+  },
+  {
+    "userId": "d5550b30-7bca-41fd-ad62-ea820c9cac78",
+    "roleId": "9db2a33d-0e88-4c6d-b6e3-061abb2e7dcb"
+  },
+  {
+    "userId": "8beda553-b7bc-4fa7-b022-f30eabee16ba",
+    "roleId": "6aa15071-fd40-42d7-8026-bf8c1fd7f430"
+  },
+  {
+    "userId": "fff9526b-f056-40ea-9810-636cf2d80c03",
+    "roleId": "d3c15b97-c9bd-42f1-803a-cff8ffb0ef97"
+  }
+]

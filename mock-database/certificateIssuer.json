@@ -1,0 +1,16 @@
+[
+  {
+    "id": "eba32736-c688-470b-94ef-4d98355ad00f",
+    "name": "MSH Lab Internal CA",
+    "kind": "INTERNAL",
+    "subjectDn": "CN=MSH Lab Internal CA, O=MSH Laboratorio",
+    "ownerId": "9522c544-5e39-47bf-a8c6-a151b712636e"
+  },
+  {
+    "id": "900bc510-eb34-422e-9e1e-1f3ac8ce373a",
+    "name": "Proveedor Externo Lab CA",
+    "kind": "EXTERNAL",
+    "subjectDn": "CN=Proveedor Externo Lab CA, O=Proveedor Sintético",
+    "ownerId": "5d18f2f9-c8a5-4f43-af2d-6f8ce5768b94"
+  }
+]

@@ -1,0 +1,35 @@
+[
+  {
+    "id": "f877c2ce-f154-43b8-be9d-cdc9a2fccb77",
+    "metricCode": "INVENTORY_COVERAGE",
+    "comparator": "GTE",
+    "targetValue": 95,
+    "justification": "Meta preliminar de la propuesta de investigación; ajustable según el diagnóstico y las políticas autorizadas.",
+    "source": "Propuesta de trabajo de grado (UNAD)",
+    "responsible": "Autor del proyecto",
+    "setAt": "2026-11-23T02:38:26.416Z",
+    "approvalStatus": "PROPOSED"
+  },
+  {
+    "id": "104e8bc5-619a-4337-8ad5-60a672cc615b",
+    "metricCode": "ALERT_ANTICIPATION",
+    "comparator": "GTE",
+    "targetValue": 30,
+    "justification": "Meta preliminar de la propuesta de investigación; ajustable según el diagnóstico y las políticas autorizadas.",
+    "source": "Propuesta de trabajo de grado (UNAD)",
+    "responsible": "Autor del proyecto",
+    "setAt": "2026-11-23T02:38:26.416Z",
+    "approvalStatus": "PROPOSED"
+  },
+  {
+    "id": "b97c94a5-bd9f-4cc9-b269-67d090af060f",
+    "metricCode": "AUDIT_COMPLETENESS",
+    "comparator": "GTE",
+    "targetValue": 100,
+    "justification": "Meta preliminar de la propuesta de investigación; ajustable según el diagnóstico y las políticas autorizadas.",
+    "source": "Propuesta de trabajo de grado (UNAD)",
+    "responsible": "Autor del proyecto",
+    "setAt": "2026-11-23T02:38:26.416Z",
+    "approvalStatus": "PROPOSED"
+  }
+]

@@ -1,0 +1,128 @@
+[
+  {
+    "id": "c7faa7b1-3ac8-4570-bea5-f75ebefdbf8e",
+    "code": "AR-001",
+    "name": "Tienda sintética AR-001",
+    "countryId": "5e1fe8fe-b73f-438b-abce-d2dda11382c5",
+    "isSynthetic": true
+  },
+  {
+    "id": "139ccd69-381c-4392-b152-31cc2e44e0ca",
+    "code": "AR-002",
+    "name": "Tienda sintética AR-002",
+    "countryId": "5e1fe8fe-b73f-438b-abce-d2dda11382c5",
+    "isSynthetic": true
+  },
+  {
+    "id": "e281d16d-3379-4c96-88c8-64cd4bc4a803",
+    "code": "AR-003",
+    "name": "Tienda sintética AR-003",
+    "countryId": "5e1fe8fe-b73f-438b-abce-d2dda11382c5",
+    "isSynthetic": true
+  },
+  {
+    "id": "0e7e1c3e-321b-4089-a4f3-c659abd0c611",
+    "code": "BR-001",
+    "name": "Tienda sintética BR-001",
+    "countryId": "ba976d74-1fbd-48fa-a1c5-1de3b4956720",
+    "isSynthetic": true
+  },
+  {
+    "id": "49852982-5362-4d6c-8f12-c34ac3de18d7",
+    "code": "BR-002",
+    "name": "Tienda sintética BR-002",
+    "countryId": "ba976d74-1fbd-48fa-a1c5-1de3b4956720",
+    "isSynthetic": true
+  },
+  {
+    "id": "3f1a71d3-17e4-4d06-b10d-a20110269cda",
+    "code": "BR-003",
+    "name": "Tienda sintética BR-003",
+    "countryId": "ba976d74-1fbd-48fa-a1c5-1de3b4956720",
+    "isSynthetic": true
+  },
+  {
+    "id": "a5982009-9ec8-41b0-a4b3-10a9c2457bb6",
+    "code": "CL-001",
+    "name": "Tienda sintética CL-001",
+    "countryId": "09a4b261-0781-4f51-9f7c-5861f37e18e1",
+    "isSynthetic": true
+  },
+  {
+    "id": "a651e7c3-6daf-43cf-a224-9924907956b4",
+    "code": "CL-002",
+    "name": "Tienda sintética CL-002",
+    "countryId": "09a4b261-0781-4f51-9f7c-5861f37e18e1",
+    "isSynthetic": true
+  },
+  {
+    "id": "bcff204b-a5e9-48f3-a715-fd693f93a280",
+    "code": "CL-003",
+    "name": "Tienda sintética CL-003",
+    "countryId": "09a4b261-0781-4f51-9f7c-5861f37e18e1",
+    "isSynthetic": true
+  },
+  {
+    "id": "82b9e30b-6636-4683-b784-16709adf1787",
+    "code": "CO-001",
+    "name": "Tienda sintética CO-001",
+    "countryId": "3541034a-365c-4da8-8c9a-435fb2d8b249",
+    "isSynthetic": true
+  },
+  {
+    "id": "14842852-8bc2-4cc3-a2ed-e5e6d4bc014b",
+    "code": "CO-002",
+    "name": "Tienda sintética CO-002",
+    "countryId": "3541034a-365c-4da8-8c9a-435fb2d8b249",
+    "isSynthetic": true
+  },
+  {
+    "id": "566faf45-0fcf-4394-b13a-e2f94f0249bc",
+    "code": "CO-003",
+    "name": "Tienda sintética CO-003",
+    "countryId": "3541034a-365c-4da8-8c9a-435fb2d8b249",
+    "isSynthetic": true
+  },
+  {
+    "id": "f695f55e-da94-48d4-baf9-14d8ce2340c5",
+    "code": "MX-001",
+    "name": "Tienda sintética MX-001",
+    "countryId": "a6cddffe-8d7a-4a22-87ac-4fda20877ea8",
+    "isSynthetic": true
+  },
+  {
+    "id": "3a776e1e-6a0d-4505-a7dc-ee67dc333dfa",
+    "code": "MX-002",
+    "name": "Tienda sintética MX-002",
+    "countryId": "a6cddffe-8d7a-4a22-87ac-4fda20877ea8",
+    "isSynthetic": true
+  },
+  {
+    "id": "4edc65b1-cdf2-428d-9874-383552700d95",
+    "code": "MX-003",
+    "name": "Tienda sintética MX-003",
+    "countryId": "a6cddffe-8d7a-4a22-87ac-4fda20877ea8",
+    "isSynthetic": true
+  },
+  {
+    "id": "4493d392-6b16-416c-9f8a-f3d155c5e4fe",
+    "code": "PE-001",
+    "name": "Tienda sintética PE-001",
+    "countryId": "32a1856c-2a4a-4307-bb20-3f36d90b78ac",
+    "isSynthetic": true
+  },
+  {
+    "id": "7305ba20-d9de-48e3-963e-9767b754bbc5",
+    "code": "PE-002",
+    "name": "Tienda sintética PE-002",
+    "countryId": "32a1856c-2a4a-4307-bb20-3f36d90b78ac",
+    "isSynthetic": true
+  },
+  {
+    "id": "8ab20bff-8900-4d9e-94d0-4756fa676b44",
+    "code": "PE-003",
+    "name": "Tienda sintética PE-003",
+    "countryId": "32a1856c-2a4a-4307-bb20-3f36d90b78ac",
+    "isSynthetic": true
+  }
+]

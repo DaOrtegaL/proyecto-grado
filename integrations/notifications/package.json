@@ -1,0 +1,9 @@
+{
+  "name": "@msh/notifications",
+  "version": "0.1.0",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": { "build": "tsc -p tsconfig.json" },
+  "dependencies": { "@msh/domain": "0.1.0" }
+}

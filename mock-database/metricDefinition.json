@@ -1,0 +1,83 @@
+[
+  {
+    "id": "261c0993-a2b9-48a9-b921-9d8987b27dae",
+    "code": "INVENTORY_COVERAGE",
+    "name": "Cobertura del inventario",
+    "formula": "Terminales elegibles inventariadas correctamente / Total de terminales elegibles × 100",
+    "unit": "%",
+    "description": "Diferencia terminales conocidas de terminales efectivamente inventariadas (al menos un inventario exitoso en el periodo).",
+    "source": "InventoryScan, Terminal"
+  },
+  {
+    "id": "49893ad3-8db4-4379-9c94-dd12af533a4b",
+    "code": "ALERT_ANTICIPATION",
+    "name": "Anticipación de alertas",
+    "formula": "Fecha de vencimiento − Fecha de primera alerta válida (días)",
+    "unit": "días",
+    "description": "Promedio de días entre la primera alerta de cada certificado y su vencimiento.",
+    "source": "Alert"
+  },
+  {
+    "id": "739a8d14-2f54-4f8e-9987-a1b8a6ceae08",
+    "code": "RENEWAL_TIME",
+    "name": "Tiempo de renovación",
+    "formula": "Fecha de instalación verificada − Fecha de creación de la solicitud (horas)",
+    "unit": "horas",
+    "description": "Promedio de horas de las renovaciones completadas.",
+    "source": "RenewalRequest"
+  },
+  {
+    "id": "ee947c40-50cf-4e87-8f3e-5b85c05cfeba",
+    "code": "INSTALL_SUCCESS_RATE",
+    "name": "Tasa de éxito de instalación",
+    "formula": "Instalaciones verificadas exitosamente / Total de intentos completados × 100",
+    "unit": "%",
+    "description": "Sobre destinos de instalación con resultado final.",
+    "source": "DeploymentTarget"
+  },
+  {
+    "id": "f119c84c-4d90-40c9-9b09-17e416ceadf9",
+    "code": "DEPLOYMENT_ERROR_RATE",
+    "name": "Errores de despliegue",
+    "formula": "Intentos fallidos / Total de intentos × 100 (y errores por cada 100 operaciones)",
+    "unit": "%",
+    "description": "Incluye fallas de instalación y de verificación.",
+    "source": "DeploymentAttempt"
+  },
+  {
+    "id": "950a8cf2-0db2-4bbb-b954-99223a19d1f7",
+    "code": "FALSE_POSITIVE_RATE",
+    "name": "Falsos positivos",
+    "formula": "Alertas confirmadas como falsos positivos / Total de alertas evaluadas × 100",
+    "unit": "%",
+    "description": "Solo cuenta alertas evaluadas por una persona.",
+    "source": "Alert"
+  },
+  {
+    "id": "ee442e8f-c53d-4656-88e7-27d81d830236",
+    "code": "AUDIT_COMPLETENESS",
+    "name": "Completitud de auditoría",
+    "formula": "Operaciones con todos los campos de auditoría obligatorios / Total de operaciones evaluadas × 100",
+    "unit": "%",
+    "description": "Campos obligatorios: usuario, acción, recurso, resultado, correlación y estado posterior.",
+    "source": "AuditEvent"
+  },
+  {
+    "id": "a227c374-12e1-4cc8-bbd4-b20dec1e428d",
+    "code": "INCIDENTS_P1P2",
+    "name": "Incidentes P1/P2 relacionados con certificados",
+    "formula": "Conteo de incidentes confirmados P1 o P2 en el periodo (normalizable por 30 días)",
+    "unit": "incidentes",
+    "description": "Permite comparar periodos equivalentes.",
+    "source": "Incident"
+  },
+  {
+    "id": "80741634-cec5-4916-8aef-8adf5ca96f95",
+    "code": "SUS_SCORE",
+    "name": "Usabilidad (SUS)",
+    "formula": "Promedio de puntuaciones SUS (0–100)",
+    "unit": "puntos",
+    "description": "Cuestionario System Usability Scale de diez preguntas.",
+    "source": "UsabilitySurvey"
+  }
+]

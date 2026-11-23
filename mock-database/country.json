@@ -1,0 +1,44 @@
+[
+  {
+    "id": "5e1fe8fe-b73f-438b-abce-d2dda11382c5",
+    "code": "AR",
+    "name": "Argentina",
+    "timezone": "America/Argentina/Buenos_Aires",
+    "locale": "es-AR"
+  },
+  {
+    "id": "ba976d74-1fbd-48fa-a1c5-1de3b4956720",
+    "code": "BR",
+    "name": "Brasil",
+    "timezone": "America/Sao_Paulo",
+    "locale": "pt-BR"
+  },
+  {
+    "id": "09a4b261-0781-4f51-9f7c-5861f37e18e1",
+    "code": "CL",
+    "name": "Chile",
+    "timezone": "America/Santiago",
+    "locale": "es-CL"
+  },
+  {
+    "id": "3541034a-365c-4da8-8c9a-435fb2d8b249",
+    "code": "CO",
+    "name": "Colombia",
+    "timezone": "America/Bogota",
+    "locale": "es-CO"
+  },
+  {
+    "id": "a6cddffe-8d7a-4a22-87ac-4fda20877ea8",
+    "code": "MX",
+    "name": "México",
+    "timezone": "America/Mexico_City",
+    "locale": "es-MX"
+  },
+  {
+    "id": "32a1856c-2a4a-4307-bb20-3f36d90b78ac",
+    "code": "PE",
+    "name": "Perú",
+    "timezone": "America/Lima",
+    "locale": "es-PE"
+  }
+]

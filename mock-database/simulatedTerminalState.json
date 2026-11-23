@@ -1,0 +1,272 @@
+[
+  {
+    "terminalId": "704c2688-96cf-4c0a-8170-235a1a6ccd58",
+    "failureMode": "NONE",
+    "scenario": "Vigente"
+  },
+  {
+    "terminalId": "f33d80c1-0938-4449-83b6-96dd6b3f133f",
+    "failureMode": "NONE",
+    "scenario": "Vigente (proveedor externo)"
+  },
+  {
+    "terminalId": "eb0bba64-1bc2-4ac8-a5c4-ff35a9e177e1",
+    "failureMode": "NONE",
+    "scenario": "Próximo a vencer (60 días)"
+  },
+  {
+    "terminalId": "1f0ee33f-9e9b-452f-95b2-55d414ae190f",
+    "failureMode": "NONE",
+    "scenario": "Vigente"
+  },
+  {
+    "terminalId": "cb3710b7-b33d-4df3-bced-c101d40786c6",
+    "failureMode": "NONE",
+    "scenario": "Próximo a vencer (30 días)"
+  },
+  {
+    "terminalId": "83c374f0-7ebb-40e2-8b2d-a52311fe21d7",
+    "failureMode": "NONE",
+    "scenario": "Vigente"
+  },
+  {
+    "terminalId": "c8c2ec33-93c2-47eb-bdf7-2f37bc6c2a75",
+    "failureMode": "NONE",
+    "scenario": "Crítico (7 días)"
+  },
+  {
+    "terminalId": "88bbaec2-d853-4306-a1eb-bfaf846dedca",
+    "failureMode": "NONE",
+    "scenario": "Vigente (proveedor externo)"
+  },
+  {
+    "terminalId": "c4f86885-699e-4ea9-8c42-75e39a03f6c3",
+    "failureMode": "NONE",
+    "scenario": "Vencido"
+  },
+  {
+    "terminalId": "bd3d83cd-bd3b-465a-a0f4-b6f90366c799",
+    "failureMode": "NONE",
+    "scenario": "Algoritmo débil (RSA 1024 / SHA-1)"
+  },
+  {
+    "terminalId": "8590cc54-68f0-4d0e-94d1-239c27f419e3",
+    "failureMode": "NONE",
+    "scenario": "Sin certificado de cliente"
+  },
+  {
+    "terminalId": "c6a93b17-d127-4db3-9059-5e60badaf0e2",
+    "failureMode": "PARTIAL",
+    "scenario": "Inventario parcial"
+  },
+  {
+    "terminalId": "fcad3c14-4bda-4553-90a6-081e4215eaeb",
+    "failureMode": "UNREACHABLE",
+    "scenario": "Terminal desconectada"
+  },
+  {
+    "terminalId": "37b89850-b970-4a2f-ad93-1888eac4ee3d",
+    "failureMode": "NONE",
+    "scenario": "Vigente"
+  },
+  {
+    "terminalId": "7c7ebcf3-c521-4c6b-b853-66399f871c4b",
+    "failureMode": "NONE",
+    "scenario": "Vigente (proveedor externo)"
+  },
+  {
+    "terminalId": "504c1d48-2007-4d79-b7ff-c5175854abf4",
+    "failureMode": "NONE",
+    "scenario": "Próximo a vencer (60 días)"
+  },
+  {
+    "terminalId": "a8292c9c-b693-48b5-b986-0ec6d82e8a6e",
+    "failureMode": "NONE",
+    "scenario": "Vigente"
+  },
+  {
+    "terminalId": "a2d14dd3-fa30-4073-b3c9-09c5a148cb39",
+    "failureMode": "NONE",
+    "scenario": "Próximo a vencer (30 días)"
+  },
+  {
+    "terminalId": "98c97eeb-4977-4544-849d-8531e94b4389",
+    "failureMode": "NONE",
+    "scenario": "Vigente"
+  },
+  {
+    "terminalId": "c60a3d34-b758-4cf6-9e85-adb20fbb0cb9",
+    "failureMode": "NONE",
+    "scenario": "Crítico (7 días)"
+  },
+  {
+    "terminalId": "e55fa0e8-a1f4-4022-a0d5-49f8603cb625",
+    "failureMode": "NONE",
+    "scenario": "Vigente (proveedor externo)"
+  },
+  {
+    "terminalId": "d73e930c-3edc-4cd6-8eb4-76af06531a4e",
+    "failureMode": "NONE",
+    "scenario": "Vencido"
+  },
+  {
+    "terminalId": "67819d31-57f2-420d-9799-926b20b876df",
+    "failureMode": "NONE",
+    "scenario": "Algoritmo débil (RSA 1024 / SHA-1)"
+  },
+  {
+    "terminalId": "772d62e7-8456-4c24-9038-584297e9b739",
+    "failureMode": "NONE",
+    "scenario": "Sin certificado de cliente"
+  },
+  {
+    "terminalId": "8855086f-9933-4fc8-b604-b01f8728a385",
+    "failureMode": "PARTIAL",
+    "scenario": "Inventario parcial"
+  },
+  {
+    "terminalId": "5b3341d3-2f92-4c1c-9a6d-201e5c56699f",
+    "failureMode": "UNREACHABLE",
+    "scenario": "Terminal desconectada"
+  },
+  {
+    "terminalId": "31cfdfdb-612b-4e83-a5fd-46cda5621ccc",
+    "failureMode": "NONE",
+    "scenario": "Vigente"
+  },
+  {
+    "terminalId": "15c5a9e0-c59b-405d-800d-739015ec3468",
+    "failureMode": "NONE",
+    "scenario": "Vigente (proveedor externo)"
+  },
+  {
+    "terminalId": "faaa4bb3-b856-48cb-9a52-393d30691a66",
+    "failureMode": "NONE",
+    "scenario": "Próximo a vencer (60 días)"
+  },
+  {
+    "terminalId": "fcb8b155-f291-4795-a478-d22e378ed740",
+    "failureMode": "NONE",
+    "scenario": "Vigente"
+  },
+  {
+    "terminalId": "ee7e86d8-32c0-4856-9e88-e0e281384e17",
+    "failureMode": "NONE",
+    "scenario": "Próximo a vencer (30 días)"
+  },
+  {
+    "terminalId": "20935bbe-da2c-48a4-9bea-92f359d4593f",
+    "failureMode": "NONE",
+    "scenario": "Vigente"
+  },
+  {
+    "terminalId": "58cc97c1-e105-4040-a35e-c5d50cb8e240",
+    "failureMode": "NONE",
+    "scenario": "Crítico (7 días)"
+  },
+  {
+    "terminalId": "13b4ac2e-b08f-4025-bf5f-c38c2c7464cd",
+    "failureMode": "NONE",
+    "scenario": "Vigente (proveedor externo)"
+  },
+  {
+    "terminalId": "4af9f46a-8b3a-4476-8b8d-3092291dac05",
+    "failureMode": "NONE",
+    "scenario": "Vencido"
+  },
+  {
+    "terminalId": "4f5f98bd-e4a6-4c0e-b282-ecdd377178ae",
+    "failureMode": "NONE",
+    "scenario": "Algoritmo débil (RSA 1024 / SHA-1)"
+  },
+  {
+    "terminalId": "e98f1ec5-814f-4846-b9f2-cc3777916689",
+    "failureMode": "NONE",
+    "scenario": "Sin certificado de cliente"
+  },
+  {
+    "terminalId": "9e418c8b-111d-4cf5-a42f-54768a88439b",
+    "failureMode": "PARTIAL",
+    "scenario": "Inventario parcial"
+  },
+  {
+    "terminalId": "b7093b7e-0b75-4691-8cbb-fcc2e69b1a25",
+    "failureMode": "UNREACHABLE",
+    "scenario": "Terminal desconectada"
+  },
+  {
+    "terminalId": "fad702c3-1483-4315-966a-09839b97b49f",
+    "failureMode": "NONE",
+    "scenario": "Vigente"
+  },
+  {
+    "terminalId": "ca067f32-2a03-402f-8866-e0b90699c275",
+    "failureMode": "NONE",
+    "scenario": "Vigente (proveedor externo)"
+  },
+  {
+    "terminalId": "01f389df-33bc-48d0-befa-396d2e8959dc",
+    "failureMode": "NONE",
+    "scenario": "Próximo a vencer (60 días)"
+  },
+  {
+    "terminalId": "0e6aa61b-8c8e-43f1-ad5f-5b2317a9213f",
+    "failureMode": "NONE",
+    "scenario": "Vigente"
+  },
+  {
+    "terminalId": "4319340f-7c64-477e-9c2e-62191f9a2ef3",
+    "failureMode": "NONE",
+    "scenario": "Próximo a vencer (30 días)"
+  },
+  {
+    "terminalId": "4abd5f0b-eb5b-41b2-ac75-27e9b1b34a25",
+    "failureMode": "NONE",
+    "scenario": "Vigente"
+  },
+  {
+    "terminalId": "2a9b7aeb-1133-4f6f-b69b-b009ac98d3b7",
+    "failureMode": "NONE",
+    "scenario": "Crítico (7 días)"
+  },
+  {
+    "terminalId": "d3fe77e8-25db-4362-abcf-cb6d55611473",
+    "failureMode": "NONE",
+    "scenario": "Vigente (proveedor externo)"
+  },
+  {
+    "terminalId": "da4dd565-8b6b-4d9e-a7c4-6d766864fc85",
+    "failureMode": "NONE",
+    "scenario": "Vencido"
+  },
+  {
+    "terminalId": "b8df4f43-77cb-4b97-89cc-70f61d44bda1",
+    "failureMode": "NONE",
+    "scenario": "Algoritmo débil (RSA 1024 / SHA-1)"
+  },
+  {
+    "terminalId": "7fc36a75-f2ad-4808-b0ce-bd7788c80863",
+    "failureMode": "NONE",
+    "scenario": "Sin certificado de cliente"
+  },
+  {
+    "terminalId": "4e078380-b5e5-4a09-b029-f46d6e1d9b36",
+    "failureMode": "PARTIAL",
+    "scenario": "Inventario parcial"
+  },
+  {
+    "terminalId": "55b3e79f-e662-476b-9a04-669f61ed2af5",
+    "failureMode": "UNREACHABLE",
+    "scenario": "Terminal desconectada"
+  },
+  {
+    "terminalId": "326c1523-14a7-42c8-a90d-bdba1733ee79",
+    "failureMode": "NONE",
+    "scenario": "Vigente"
+  },
+  {
+    "terminalId": "b991634e-bc33-4732-9ba2-40a0e332255e",
+    "failureMode": "NONE",
+    "scenario": "Vigente (proveedor externo)"
+  }
+]

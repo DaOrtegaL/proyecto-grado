@@ -1,0 +1,167 @@
+[
+  {
+    "id": "d0f9b297-ca60-40e1-adfb-b945444af446",
+    "code": "dashboard:read",
+    "description": "dashboard:read"
+  },
+  {
+    "id": "b8c1d591-5586-42ef-b653-4710d621075d",
+    "code": "geo:read",
+    "description": "geo:read"
+  },
+  {
+    "id": "b173c106-93f4-4984-8f7b-911b624de675",
+    "code": "certificates:read",
+    "description": "certificates:read"
+  },
+  {
+    "id": "cc70ee06-9da9-456e-929c-bac4cef06cc6",
+    "code": "certificates:export",
+    "description": "certificates:export"
+  },
+  {
+    "id": "3b4665a8-b4b6-4d92-90f6-abf2e1162a7a",
+    "code": "inventory:run",
+    "description": "inventory:run"
+  },
+  {
+    "id": "aa08b384-0389-4899-be8b-5976a5f3ef3a",
+    "code": "inventory:read",
+    "description": "inventory:read"
+  },
+  {
+    "id": "f573ef94-739b-4347-86b2-cd712bb37b17",
+    "code": "alerts:read",
+    "description": "alerts:read"
+  },
+  {
+    "id": "7de98e13-3d0d-40c8-bb5b-c12e46bd7a8d",
+    "code": "alerts:manage",
+    "description": "alerts:manage"
+  },
+  {
+    "id": "4cf82bbd-3e14-4f0e-b6d8-f16928cae007",
+    "code": "owners:read",
+    "description": "owners:read"
+  },
+  {
+    "id": "97f07e97-0027-4cab-8e49-5562767439c5",
+    "code": "owners:manage",
+    "description": "owners:manage"
+  },
+  {
+    "id": "77c21da2-5215-4502-bcae-c9bc4ff1c780",
+    "code": "audit:read",
+    "description": "audit:read"
+  },
+  {
+    "id": "8cb737cc-7155-4297-8ce8-8d8c57408878",
+    "code": "audit:verify",
+    "description": "audit:verify"
+  },
+  {
+    "id": "8623db04-36db-460e-b703-f84168f3680a",
+    "code": "evidence:export",
+    "description": "evidence:export"
+  },
+  {
+    "id": "0855c4a1-8043-4f31-ba6d-723b294d9cb0",
+    "code": "simulator:manage",
+    "description": "simulator:manage"
+  },
+  {
+    "id": "dd0f441c-5616-4387-8817-fb4d4a04cfd0",
+    "code": "users:manage",
+    "description": "users:manage"
+  },
+  {
+    "id": "9ca64074-70f0-4c7a-b6f9-be3e92aca238",
+    "code": "admin:read",
+    "description": "admin:read"
+  },
+  {
+    "id": "7acf7cfd-833a-4df7-bacc-0e1644d13201",
+    "code": "security:read",
+    "description": "security:read"
+  },
+  {
+    "id": "210883e1-77fe-457b-aef9-74d712e9388c",
+    "code": "security:manage",
+    "description": "security:manage"
+  },
+  {
+    "id": "f335fef0-bb50-4909-97ec-f9fbfe69c7aa",
+    "code": "agents:manage",
+    "description": "agents:manage"
+  },
+  {
+    "id": "b2b530f0-e790-45c2-90c1-5a29aa59010c",
+    "code": "renewals:read",
+    "description": "renewals:read"
+  },
+  {
+    "id": "b8b15905-ed47-48c4-9693-f9edf5ae43be",
+    "code": "renewals:create",
+    "description": "renewals:create"
+  },
+  {
+    "id": "bea587e5-bab4-40e9-87aa-d35bf123ad26",
+    "code": "renewals:issue",
+    "description": "renewals:issue"
+  },
+  {
+    "id": "51caccc8-1855-4703-8e7a-f02432a7d489",
+    "code": "approvals:read",
+    "description": "approvals:read"
+  },
+  {
+    "id": "faf9a93a-75e0-453a-9eff-83c8f0d7a959",
+    "code": "approvals:decide",
+    "description": "approvals:decide"
+  },
+  {
+    "id": "396e5961-5064-44c9-bfa1-543f76481397",
+    "code": "deployments:read",
+    "description": "deployments:read"
+  },
+  {
+    "id": "dd8c7cf9-ebcb-4aaa-b38d-c1aa33c0e5ac",
+    "code": "deployments:schedule",
+    "description": "deployments:schedule"
+  },
+  {
+    "id": "87361790-a9bd-4fca-b88f-ba9a6b10c09c",
+    "code": "deployments:execute",
+    "description": "deployments:execute"
+  },
+  {
+    "id": "d686d2e5-833c-45d2-b6a9-71b6e6724ec7",
+    "code": "deployments:rollback",
+    "description": "deployments:rollback"
+  },
+  {
+    "id": "d3a16529-51c3-4187-8210-da524a651710",
+    "code": "maintenance:manage",
+    "description": "maintenance:manage"
+  },
+  {
+    "id": "a0b0ef91-9ac0-49ab-8e5f-b4de5852a589",
+    "code": "metrics:read",
+    "description": "metrics:read"
+  },
+  {
+    "id": "4af80f48-13dc-4801-8139-a51e37dd8599",
+    "code": "metrics:manage",
+    "description": "metrics:manage"
+  },
+  {
+    "id": "3357ef65-c65b-443f-a78d-dbda143c508a",
+    "code": "research:read",
+    "description": "research:read"
+  },
+  {
+    "id": "9b84175c-bec5-4258-8e25-0c05bff8d4b3",
+    "code": "research:manage",
+    "description": "research:manage"
+  }
+]

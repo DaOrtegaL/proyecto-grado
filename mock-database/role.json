@@ -1,0 +1,42 @@
+[
+  {
+    "id": "0b2fe6db-a969-4493-8a1a-40b58dc02018",
+    "code": "ADMIN",
+    "description": "Administrador"
+  },
+  {
+    "id": "369139a1-33c4-4afe-b3c6-892664e64390",
+    "code": "PKI_ADMIN",
+    "description": "Administrador PKI"
+  },
+  {
+    "id": "f8eea623-4203-4046-92e4-c4847776e491",
+    "code": "ISSUER_OWNER",
+    "description": "Responsable del emisor"
+  },
+  {
+    "id": "6596ff2c-e2b2-4703-9c7b-5b4d0376a597",
+    "code": "RETAIL_IT",
+    "description": "Retail IT"
+  },
+  {
+    "id": "b34cd6fe-815b-4417-abb5-33092c80790b",
+    "code": "PAYMENT_INTEGRATION",
+    "description": "Payment Integration"
+  },
+  {
+    "id": "9db2a33d-0e88-4c6d-b6e3-061abb2e7dcb",
+    "code": "STORE_SUPPORT",
+    "description": "Soporte de tiendas"
+  },
+  {
+    "id": "6aa15071-fd40-42d7-8026-bf8c1fd7f430",
+    "code": "AUDITOR",
+    "description": "Auditor"
+  },
+  {
+    "id": "d3c15b97-c9bd-42f1-803a-cff8ffb0ef97",
+    "code": "VIEWER",
+    "description": "Consulta"
+  }
+]

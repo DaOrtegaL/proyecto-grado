@@ -1,0 +1,82 @@
+name: msh-clm
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: Developer
+      MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD:?Defina MSSQL_SA_PASSWORD en .env}
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -C -S localhost -U sa -P \"$$MSSQL_SA_PASSWORD\" -Q \"SELECT 1\" || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      start_period: 20s
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+
+  # Crea la base de datos, aplica migraciones y carga datos sintéticos de laboratorio.
+  migrate:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+      target: tools
+    command: ["sh", "-c", "npx prisma migrate deploy && npx tsx prisma/seed/seed.ts"]
+    environment:
+      MOCK_DATABASE: "0"
+      DATABASE_URL: sqlserver://sqlserver:1433;database=msh_clm;user=sa;password=${MSSQL_SA_PASSWORD};trustServerCertificate=true;encrypt=true
+      SEED_LAB_PASSWORD: ${SEED_LAB_PASSWORD:?Defina SEED_LAB_PASSWORD en .env}
+      SEED_RANDOM_SEED: ${SEED_RANDOM_SEED:-20260101}
+      SEED_STORES_PER_COUNTRY: ${SEED_STORES_PER_COUNTRY:-3}
+      SEED_TERMINALS_PER_STORE: ${SEED_TERMINALS_PER_STORE:-3}
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+      target: runtime
+    environment:
+      MOCK_DATABASE: "0"
+      DATABASE_URL: sqlserver://sqlserver:1433;database=msh_clm;user=sa;password=${MSSQL_SA_PASSWORD};trustServerCertificate=true;encrypt=true
+      API_PORT: "3000"
+      JWT_ACCESS_SECRET: ${JWT_ACCESS_SECRET:?Defina JWT_ACCESS_SECRET en .env}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:?Defina JWT_REFRESH_SECRET en .env}
+      CORS_ORIGIN: http://localhost:8080
+      COOKIE_SECURE: "false"
+      EXECUTION_MODE: SIMULATION
+      LAB_MODE_ENABLED: "false"
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+    ports:
+      - "3000:3000"
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    depends_on:
+      - api
+    ports:
+      - "8080:80"
+
+volumes:
+  sqlserver-data:

@@ -1,0 +1,101 @@
+[
+  {
+    "id": "3fe107a3-1f38-4e83-9594-e9dc57645873",
+    "email": "admin@msh.lab",
+    "displayName": "Administrador de laboratorio",
+    "passwordHash": "$2a$12$VHe1GFbLBeXWRHZ4dVsAZuR9jLIHzwN9ERecsUQ1dxHvAt.3YE/Xa",
+    "isActive": true,
+    "locale": "es",
+    "timezone": "America/Bogota",
+    "isSynthetic": true,
+    "createdAt": "2026-11-23T02:38:25.607Z"
+  },
+  {
+    "id": "26ca30e5-0b72-4f12-abe9-41ff2b06998d",
+    "email": "pki@msh.lab",
+    "displayName": "Administrador PKI de laboratorio",
+    "passwordHash": "$2a$12$VHe1GFbLBeXWRHZ4dVsAZuR9jLIHzwN9ERecsUQ1dxHvAt.3YE/Xa",
+    "isActive": true,
+    "locale": "es",
+    "timezone": "America/Bogota",
+    "isSynthetic": true,
+    "createdAt": "2026-11-23T02:38:25.620Z"
+  },
+  {
+    "id": "2af4e7a7-25af-4f49-b3f7-3eb67a540942",
+    "email": "emisor@msh.lab",
+    "displayName": "Responsable de emisor de laboratorio",
+    "passwordHash": "$2a$12$VHe1GFbLBeXWRHZ4dVsAZuR9jLIHzwN9ERecsUQ1dxHvAt.3YE/Xa",
+    "isActive": true,
+    "locale": "es",
+    "timezone": "America/Bogota",
+    "isSynthetic": true,
+    "createdAt": "2026-11-23T02:38:25.622Z"
+  },
+  {
+    "id": "7ffcd4bc-1207-4187-a8e6-e785265bf763",
+    "email": "retailit@msh.lab",
+    "displayName": "Retail IT de laboratorio",
+    "passwordHash": "$2a$12$VHe1GFbLBeXWRHZ4dVsAZuR9jLIHzwN9ERecsUQ1dxHvAt.3YE/Xa",
+    "isActive": true,
+    "locale": "es",
+    "timezone": "America/Bogota",
+    "isSynthetic": true,
+    "createdAt": "2026-11-23T02:38:25.625Z"
+  },
+  {
+    "id": "567272f7-f345-47e7-87eb-6dfdd9dc2bf0",
+    "email": "pagos@msh.lab",
+    "displayName": "Payment Integration de laboratorio",
+    "passwordHash": "$2a$12$VHe1GFbLBeXWRHZ4dVsAZuR9jLIHzwN9ERecsUQ1dxHvAt.3YE/Xa",
+    "isActive": true,
+    "locale": "es",
+    "timezone": "America/Bogota",
+    "isSynthetic": true,
+    "createdAt": "2026-11-23T02:38:25.627Z"
+  },
+  {
+    "id": "d5550b30-7bca-41fd-ad62-ea820c9cac78",
+    "email": "soporte@msh.lab",
+    "displayName": "Soporte de tiendas de laboratorio",
+    "passwordHash": "$2a$12$VHe1GFbLBeXWRHZ4dVsAZuR9jLIHzwN9ERecsUQ1dxHvAt.3YE/Xa",
+    "isActive": true,
+    "locale": "es",
+    "timezone": "America/Bogota",
+    "isSynthetic": true,
+    "createdAt": "2026-11-23T02:38:25.629Z"
+  },
+  {
+    "id": "8beda553-b7bc-4fa7-b022-f30eabee16ba",
+    "email": "auditor@msh.lab",
+    "displayName": "Auditor de laboratorio",
+    "passwordHash": "$2a$12$VHe1GFbLBeXWRHZ4dVsAZuR9jLIHzwN9ERecsUQ1dxHvAt.3YE/Xa",
+    "isActive": true,
+    "locale": "es",
+    "timezone": "America/Bogota",
+    "isSynthetic": true,
+    "createdAt": "2026-11-23T02:38:25.632Z"
+  },
+  {
+    "id": "fff9526b-f056-40ea-9810-636cf2d80c03",
+    "email": "consulta@msh.lab",
+    "displayName": "Usuario de consulta de laboratorio",
+    "passwordHash": "$2a$12$VHe1GFbLBeXWRHZ4dVsAZuR9jLIHzwN9ERecsUQ1dxHvAt.3YE/Xa",
+    "isActive": true,
+    "locale": "es",
+    "timezone": "America/Bogota",
+    "isSynthetic": true,
+    "createdAt": "2026-11-23T02:38:25.634Z"
+  },
+  {
+    "id": "bc4a208f-4ab4-4866-84d1-097162524daa",
+    "email": "sistema@msh.lab",
+    "displayName": "Sistema (tareas automáticas)",
+    "passwordHash": "$2a$12$pqB/O6pdUsc1UDAgeiX6zO02mHQ1FyXtiQEy9M7mmIHQQi/RauzgK",
+    "isActive": false,
+    "locale": "es",
+    "timezone": "America/Bogota",
+    "isSynthetic": true,
+    "createdAt": "2026-11-23T02:38:26.584Z"
+  }
+]

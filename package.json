@@ -1,0 +1,48 @@
+{
+  "name": "msh-certificate-lifecycle",
+  "version": "0.1.0",
+  "private": true,
+  "description": "My Store Health â€” GestiÃ³n Centralizada del Ciclo de Vida de Certificados Digitales (MSH-CLM)",
+  "workspaces": [
+    "packages/*",
+    "integrations/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build:libs": "npm run build -w @msh/domain -w @msh/mock-db -w @msh/validation -w @msh/simulated-pos -w @msh/windows-pos -w @msh/msh-adapter -w @msh/notifications",
+    "build": "npm run build:libs && npm run build -w @msh/api && npm run build -w @msh/web",
+    "dev:api": "npm run start:dev -w @msh/api",
+    "dev:web": "npm run dev -w @msh/web",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate deploy",
+    "db:migrate:dev": "prisma migrate dev",
+    "db:seed": "tsx prisma/seed/seed.ts",
+    "mock:reset": "tsx prisma/seed/seed.ts --mock --reset",
+    "test": "npm run test:unit && npm run test:integration",
+    "test:unit": "npm run test -w @msh/domain -w @msh/mock-db -w @msh/simulated-pos -w @msh/api",
+    "test:integration": "jest --config tests/jest.config.js --runInBand",
+    "test:e2e": "playwright test",
+    "format": "prettier --write ."
+  },
+  "prisma": {
+    "schema": "prisma/schema.prisma",
+    "seed": "tsx prisma/seed/seed.ts"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.19.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.1",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.10.0",
+    "jest": "^29.7.0",
+    "prettier": "^3.4.2",
+    "prisma": "^6.19.0",
+    "ts-jest": "^29.2.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

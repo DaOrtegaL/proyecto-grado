@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify:
+    # Windows: permite ejecutar la prueba real del script PowerShell 5.1 (RF01).
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx prisma generate
+      - run: npm run build:libs
+      - name: Pruebas unitarias (dominio, simulador, API)
+        run: npm run test:unit
+      - name: Compilación de API y web
+        run: |
+          npm run build -w @msh/api
+          npm run build -w @msh/web
+      - name: Pruebas de integración y seguridad
+        run: npm run test:integration
+      - name: Pruebas end-to-end (Playwright, base simulada)
+        run: |
+          npx playwright install chromium
+          npm run test:e2e

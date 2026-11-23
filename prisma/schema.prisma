@@ -1,0 +1,789 @@
+// Esquema relacional de MSH-CLM (SQL Server).
+// Decisiones:
+//  - Las fechas se almacenan en UTC (datetime2). La zona horaria solo se aplica al presentar.
+//  - SQL Server no soporta enumeraciones nativas ni JSON en Prisma: los estados son cadenas
+//    validadas en la capa de dominio y los documentos JSON se guardan como texto.
+//  - Todas las relaciones usan NoAction para evitar rutas de eliminación en cascada múltiples.
+//  - Nunca se almacenan claves privadas; `hasPrivateKey` solo indica su existencia en el terminal.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+// ───────────── Seguridad y acceso ─────────────
+
+model User {
+  id           String   @id @default(uuid()) @db.UniqueIdentifier
+  email        String   @unique @db.NVarChar(254)
+  displayName  String   @db.NVarChar(200)
+  passwordHash String   @db.NVarChar(200)
+  isActive     Boolean  @default(true)
+  locale       String   @default("es") @db.NVarChar(10)
+  timezone     String   @default("America/Bogota") @db.NVarChar(64)
+  isSynthetic  Boolean  @default(false)
+  createdAt    DateTime @default(now())
+
+  roles         UserRole[]
+  refreshTokens RefreshToken[]
+  owner         CertificateOwner?
+}
+
+model Role {
+  id          String @id @default(uuid()) @db.UniqueIdentifier
+  code        String @unique @db.NVarChar(64)
+  description String @db.NVarChar(300)
+
+  users       UserRole[]
+  permissions RolePermission[]
+}
+
+model Permission {
+  id          String @id @default(uuid()) @db.UniqueIdentifier
+  code        String @unique @db.NVarChar(64)
+  description String @db.NVarChar(300)
+
+  roles RolePermission[]
+}
+
+model UserRole {
+  userId String @db.UniqueIdentifier
+  roleId String @db.UniqueIdentifier
+
+  user User @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  role Role @relation(fields: [roleId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([userId, roleId])
+}
+
+model RolePermission {
+  roleId       String @db.UniqueIdentifier
+  permissionId String @db.UniqueIdentifier
+
+  role       Role       @relation(fields: [roleId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  permission Permission @relation(fields: [permissionId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([roleId, permissionId])
+}
+
+/// Los tokens de refresco se guardan únicamente como hash SHA-256 y rotan en cada uso.
+model RefreshToken {
+  id        String    @id @default(uuid()) @db.UniqueIdentifier
+  userId    String    @db.UniqueIdentifier
+  tokenHash String    @unique @db.NVarChar(64)
+  familyId  String    @db.UniqueIdentifier
+  expiresAt DateTime
+  revokedAt DateTime?
+  createdAt DateTime  @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([userId])
+  @@index([familyId])
+}
+
+/// Registro de auditoría encadenado por hash (RF10). La secuencia define el orden de la cadena.
+model AuditEvent {
+  sequence      Int      @id @default(autoincrement())
+  occurredAt    DateTime
+  actorId       String?  @db.UniqueIdentifier
+  action        String   @db.NVarChar(100)
+  resourceType  String   @db.NVarChar(100)
+  resourceId    String?  @db.NVarChar(100)
+  previousState String?  @db.NVarChar(Max)
+  newState      String?  @db.NVarChar(Max)
+  result        String   @db.NVarChar(16)
+  reason        String?  @db.NVarChar(500)
+  correlationId String   @db.NVarChar(64)
+  approvalId    String?  @db.NVarChar(64)
+  previousHash  String   @db.NVarChar(64)
+  hash          String   @unique @db.NVarChar(64)
+
+  @@index([actorId])
+  @@index([action])
+  @@index([resourceType, resourceId])
+  @@index([correlationId])
+}
+
+// ───────────── Inventario regional ─────────────
+
+model Country {
+  id       String @id @default(uuid()) @db.UniqueIdentifier
+  code     String @unique @db.NVarChar(2)
+  name     String @db.NVarChar(100)
+  timezone String @db.NVarChar(64)
+  locale   String @db.NVarChar(10)
+
+  stores Store[]
+  owners CertificateOwner[]
+}
+
+model Store {
+  id          String  @id @default(uuid()) @db.UniqueIdentifier
+  code        String  @unique @db.NVarChar(32)
+  name        String  @db.NVarChar(200)
+  countryId   String  @db.UniqueIdentifier
+  isSynthetic Boolean @default(false)
+
+  country   Country    @relation(fields: [countryId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  terminals Terminal[]
+
+  @@index([countryId])
+}
+
+model TerminalModel {
+  id     String @id @default(uuid()) @db.UniqueIdentifier
+  vendor String @db.NVarChar(64)
+  name   String @db.NVarChar(120)
+
+  terminals Terminal[]
+
+  @@unique([vendor, name])
+}
+
+model Terminal {
+  id              String    @id @default(uuid()) @db.UniqueIdentifier
+  hostname        String    @unique @db.NVarChar(255)
+  storeId         String    @db.UniqueIdentifier
+  modelId         String    @db.UniqueIdentifier
+  osVersion       String    @db.NVarChar(120)
+  /// ONLINE | OFFLINE | UNKNOWN
+  status          String    @default("UNKNOWN") @db.NVarChar(16)
+  /// SIMULATED | POWERSHELL_AGENT | MSH — determina el adaptador de inventario.
+  source          String    @default("SIMULATED") @db.NVarChar(24)
+  isSynthetic     Boolean   @default(false)
+  lastInventoryAt DateTime?
+
+  store             Store                     @relation(fields: [storeId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  model             TerminalModel             @relation(fields: [modelId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  installations     CertificateInstallation[]
+  scans             InventoryScan[]
+  alerts            Alert[]
+  simulatedState    SimulatedTerminalState?
+  securityFindings  SecurityFinding[]
+  renewalTargets    RenewalTarget[]
+  deploymentTargets DeploymentTarget[]
+  agentIdentity     AgentIdentity?
+  incidents         Incident[]
+
+  @@index([storeId])
+}
+
+/// Estado persistente de la terminal virtual (solo certificados públicos en PEM).
+model SimulatedTerminalState {
+  terminalId  String @id @db.UniqueIdentifier
+  /// NONE | UNREACHABLE | PARTIAL
+  failureMode String @default("NONE") @db.NVarChar(16)
+  scenario    String @db.NVarChar(200)
+
+  terminal Terminal                   @relation(fields: [terminalId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  slots    SimulatedCertificateSlot[]
+}
+
+model SimulatedCertificateSlot {
+  id            String  @id @default(uuid()) @db.UniqueIdentifier
+  terminalId    String  @db.UniqueIdentifier
+  pem           String  @db.NVarChar(Max)
+  storeLocation String  @db.NVarChar(32)
+  storeName     String  @db.NVarChar(64)
+  hasPrivateKey Boolean
+
+  state SimulatedTerminalState @relation(fields: [terminalId], references: [terminalId], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([terminalId])
+}
+
+// ───────────── Certificados ─────────────
+
+model CertificateIssuer {
+  id        String  @id @default(uuid()) @db.UniqueIdentifier
+  name      String  @db.NVarChar(200)
+  /// INTERNAL | EXTERNAL
+  kind      String  @db.NVarChar(16)
+  subjectDn String  @unique @db.NVarChar(450)
+  ownerId   String? @db.UniqueIdentifier
+
+  owner        CertificateOwner? @relation(fields: [ownerId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  certificates Certificate[]
+}
+
+/// Responsable operativo. Precedencia de asignación: certificado > política > emisor (RF03).
+model CertificateOwner {
+  id        String  @id @default(uuid()) @db.UniqueIdentifier
+  name      String  @db.NVarChar(200)
+  email     String  @unique @db.NVarChar(254)
+  countryId String? @db.UniqueIdentifier
+  userId    String? @unique @db.UniqueIdentifier
+
+  country      Country?            @relation(fields: [countryId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  user         User?               @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  issuers      CertificateIssuer[]
+  certificates Certificate[]
+  policies     CertificatePolicy[]
+  alerts       Alert[]
+}
+
+model CertificatePolicy {
+  id              String  @id @default(uuid()) @db.UniqueIdentifier
+  name            String  @unique @db.NVarChar(200)
+  minKeySizeBits  Int     @default(2048)
+  /// Lista JSON de algoritmos de firma no permitidos.
+  weakSignatures  String  @default("[\"RSASSA-PKCS1-v1_5-SHA1\",\"ECDSA-SHA1\"]") @db.NVarChar(500)
+  requiredEku     String  @default("clientAuth") @db.NVarChar(64)
+  /// Lista JSON de umbrales de alerta en días.
+  alertThresholds String  @default("[60,30,15,7]") @db.NVarChar(100)
+  ownerId         String? @db.UniqueIdentifier
+
+  owner        CertificateOwner? @relation(fields: [ownerId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  certificates Certificate[]
+}
+
+/// Identidad del certificado, distinta de sus instalaciones en terminales.
+model Certificate {
+  id                 String   @id @default(uuid()) @db.UniqueIdentifier
+  thumbprintSha256   String   @unique @db.NVarChar(64)
+  subject            String   @db.NVarChar(450)
+  issuerDn           String   @db.NVarChar(450)
+  serialNumber       String   @db.NVarChar(128)
+  notBefore          DateTime
+  notAfter           DateTime
+  publicKeyAlgorithm String   @db.NVarChar(64)
+  keySizeBits        Int?
+  signatureAlgorithm String   @db.NVarChar(64)
+  /// Listas JSON de usos de clave.
+  keyUsage           String   @db.NVarChar(300)
+  extendedKeyUsage   String   @db.NVarChar(300)
+  issuerId           String?  @db.UniqueIdentifier
+  ownerId            String?  @db.UniqueIdentifier
+  policyId           String?  @db.UniqueIdentifier
+  /// NONE | REQUESTED | ... (se amplía en la fase de renovaciones)
+  renewalStatus      String   @default("NONE") @db.NVarChar(32)
+  isSynthetic        Boolean  @default(false)
+  discoveredAt       DateTime
+  lastVerifiedAt     DateTime
+
+  issuer           CertificateIssuer?        @relation(fields: [issuerId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  owner            CertificateOwner?         @relation(fields: [ownerId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  policy           CertificatePolicy?        @relation(fields: [policyId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  installations    CertificateInstallation[]
+  history          CertificateHistory[]
+  alerts           Alert[]
+  findings         InventoryFinding[]
+  securityFindings SecurityFinding[]
+  renewalsAsOld    RenewalRequest[]          @relation("RenewalOldCertificate")
+  renewalsAsNew    RenewalRequest[]          @relation("RenewalNewCertificate")
+  incidents        Incident[]
+
+  @@index([notAfter])
+  @@index([issuerId])
+  @@index([ownerId])
+}
+
+model CertificateInstallation {
+  id            String   @id @default(uuid()) @db.UniqueIdentifier
+  certificateId String   @db.UniqueIdentifier
+  terminalId    String   @db.UniqueIdentifier
+  storeLocation String   @db.NVarChar(32)
+  storeName     String   @db.NVarChar(64)
+  hasPrivateKey Boolean
+  /// PRESENT | MISSING (dejó de aparecer en el último inventario)
+  status        String   @default("PRESENT") @db.NVarChar(16)
+  firstSeenAt   DateTime
+  lastSeenAt    DateTime
+
+  certificate Certificate @relation(fields: [certificateId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  terminal    Terminal    @relation(fields: [terminalId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@unique([certificateId, terminalId, storeLocation, storeName])
+  @@index([terminalId])
+}
+
+model CertificateHistory {
+  id            String   @id @default(uuid()) @db.UniqueIdentifier
+  certificateId String   @db.UniqueIdentifier
+  change        String   @db.NVarChar(64)
+  details       String?  @db.NVarChar(Max)
+  createdAt     DateTime @default(now())
+  correlationId String?  @db.NVarChar(64)
+
+  certificate Certificate @relation(fields: [certificateId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([certificateId])
+}
+
+// ───────────── Inventario: ejecuciones y hallazgos ─────────────
+
+model InventoryScan {
+  id                  String    @id @default(uuid()) @db.UniqueIdentifier
+  terminalId          String    @db.UniqueIdentifier
+  requestedById       String?   @db.UniqueIdentifier
+  /// SUCCESS | PARTIAL | FAILED
+  status              String    @db.NVarChar(16)
+  source              String    @db.NVarChar(24)
+  startedAt           DateTime
+  finishedAt          DateTime?
+  certificatesFound   Int       @default(0)
+  newCertificates     Int       @default(0)
+  changedCertificates Int       @default(0)
+  missingCertificates Int       @default(0)
+  alertsCreated       Int       @default(0)
+  errorSummary        String?   @db.NVarChar(Max)
+  /// Reporte validado (solo metadatos públicos); constituye la evidencia inmutable de la ejecución.
+  reportJson          String?   @db.NVarChar(Max)
+  correlationId       String    @db.NVarChar(64)
+
+  terminal Terminal           @relation(fields: [terminalId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  findings InventoryFinding[]
+
+  @@index([terminalId, startedAt])
+}
+
+model InventoryFinding {
+  id            String   @id @default(uuid()) @db.UniqueIdentifier
+  scanId        String   @db.UniqueIdentifier
+  certificateId String?  @db.UniqueIdentifier
+  /// NEW | CHANGED | MISSING | ERROR
+  kind          String   @db.NVarChar(16)
+  detail        String   @db.NVarChar(500)
+  createdAt     DateTime @default(now())
+
+  scan        InventoryScan @relation(fields: [scanId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  certificate Certificate?  @relation(fields: [certificateId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([scanId])
+}
+
+// ───────────── Alertas ─────────────
+
+model Alert {
+  id               String    @id @default(uuid()) @db.UniqueIdentifier
+  certificateId    String    @db.UniqueIdentifier
+  terminalId       String    @db.UniqueIdentifier
+  thresholdDays    Int
+  /// LOW | MEDIUM | HIGH | CRITICAL
+  priority         String    @db.NVarChar(16)
+  /// OPEN | ACKNOWLEDGED | RESOLVED | SUPERSEDED
+  status           String    @default("OPEN") @db.NVarChar(16)
+  ownerId          String?   @db.UniqueIdentifier
+  dedupKey         String    @unique @db.NVarChar(120)
+  notAfter         DateTime
+  createdAt        DateTime  @default(now())
+  acknowledgedAt   DateTime?
+  acknowledgedById String?   @db.UniqueIdentifier
+  resolvedAt       DateTime?
+  escalationLevel  Int       @default(0)
+  /// null = sin evaluar; true/false = evaluación humana (indicador de falsos positivos)
+  falsePositive    Boolean?
+
+  certificate   Certificate       @relation(fields: [certificateId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  terminal      Terminal          @relation(fields: [terminalId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  owner         CertificateOwner? @relation(fields: [ownerId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  notifications Notification[]
+
+  @@index([status])
+  @@index([certificateId, terminalId])
+}
+
+model Notification {
+  id        String   @id @default(uuid()) @db.UniqueIdentifier
+  alertId   String   @db.UniqueIdentifier
+  channel   String   @db.NVarChar(24)
+  recipient String   @db.NVarChar(254)
+  /// PENDING | SENT | FAILED (en MVP: registro en bitácora, sin envío real)
+  status    String   @db.NVarChar(16)
+  createdAt DateTime @default(now())
+
+  alert Alert @relation(fields: [alertId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([alertId])
+}
+
+// ───────────── Seguridad: hallazgos y agentes ─────────────
+
+/// Hallazgo detectado por reglas configurables (RF12). No implica intención maliciosa.
+model SecurityFinding {
+  id             String    @id @default(uuid()) @db.UniqueIdentifier
+  /// EXPIRED | WEAK_ALGORITHM | UNKNOWN_ISSUER | NO_OWNER | UNEXPECTED_CERTIFICATE | MISSING_CLIENT_CERTIFICATE | DUPLICATE_SUBJECT | STALE_INVENTORY | INCOMPATIBLE_USAGE | UNAUTHORIZED_CHANGE
+  type           String    @db.NVarChar(40)
+  /// LOW | MEDIUM | HIGH | CRITICAL
+  severity       String    @db.NVarChar(16)
+  /// OPEN | RESOLVED | DISMISSED
+  status         String    @default("OPEN") @db.NVarChar(16)
+  certificateId  String?   @db.UniqueIdentifier
+  terminalId     String?   @db.UniqueIdentifier
+  dedupKey       String    @unique @db.NVarChar(200)
+  detail         String    @db.NVarChar(500)
+  recommendation String    @db.NVarChar(500)
+  detectedAt     DateTime
+  resolvedAt     DateTime?
+
+  certificate Certificate? @relation(fields: [certificateId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  terminal    Terminal?    @relation(fields: [terminalId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([status])
+}
+
+/// Identidad de agente: solo se almacena la clave PÚBLICA Ed25519; la privada permanece en la terminal.
+model AgentIdentity {
+  id           String   @id @default(uuid()) @db.UniqueIdentifier
+  terminalId   String   @unique @db.UniqueIdentifier
+  publicKeyPem String   @db.NVarChar(Max)
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+
+  terminal Terminal     @relation(fields: [terminalId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  nonces   AgentNonce[]
+}
+
+/// Nonces recibidos: protegen contra reenvío (replay) y permiten idempotencia.
+model AgentNonce {
+  id         String   @id @default(uuid()) @db.UniqueIdentifier
+  agentId    String   @db.UniqueIdentifier
+  nonce      String   @db.NVarChar(100)
+  receivedAt DateTime
+  scanId     String?  @db.UniqueIdentifier
+
+  agent AgentIdentity @relation(fields: [agentId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@unique([agentId, nonce])
+}
+
+// ───────────── Renovaciones, aprobaciones e instalaciones ─────────────
+
+model MaintenanceWindow {
+  id          String   @id @default(uuid()) @db.UniqueIdentifier
+  name        String   @db.NVarChar(200)
+  startsAt    DateTime
+  endsAt      DateTime
+  countryCode String?  @db.NVarChar(2)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+
+  jobs      DeploymentJob[]
+  approvals ApprovalRequest[]
+}
+
+model RenewalRequest {
+  id                String    @id @default(uuid()) @db.UniqueIdentifier
+  certificateId     String    @db.UniqueIdentifier
+  requestedById     String    @db.UniqueIdentifier
+  /// REQUESTED | PENDING_ISSUANCE | ISSUED | PENDING_APPROVAL | APPROVED | SCHEDULED | INSTALLING | INSTALLED | VERIFIED | COMPLETED | REJECTED | FAILED | CANCELLED | ROLLED_BACK
+  status            String    @default("REQUESTED") @db.NVarChar(24)
+  reason            String?   @db.NVarChar(500)
+  /// Evidencia de emisión (JSON). Sin ella no puede registrarse un certificado como emitido.
+  issuanceEvidence  String?   @db.NVarChar(Max)
+  /// Certificado emitido en formato PEM (solo parte pública).
+  newCertificatePem String?   @db.NVarChar(Max)
+  newCertificateId  String?   @db.UniqueIdentifier
+  createdAt         DateTime
+  updatedAt         DateTime
+  completedAt       DateTime?
+
+  certificate    Certificate       @relation("RenewalOldCertificate", fields: [certificateId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  newCertificate Certificate?      @relation("RenewalNewCertificate", fields: [newCertificateId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  targets        RenewalTarget[]
+  approvals      ApprovalRequest[]
+  jobs           DeploymentJob[]
+
+  @@index([status])
+  @@index([certificateId])
+}
+
+model RenewalTarget {
+  renewalId  String @db.UniqueIdentifier
+  terminalId String @db.UniqueIdentifier
+
+  renewal  RenewalRequest @relation(fields: [renewalId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  terminal Terminal       @relation(fields: [terminalId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([renewalId, terminalId])
+}
+
+model ApprovalRequest {
+  id                  String   @id @default(uuid()) @db.UniqueIdentifier
+  renewalId           String   @db.UniqueIdentifier
+  requestedById       String   @db.UniqueIdentifier
+  /// PENDING | APPROVED | REJECTED | INVALIDATED | EXPIRED
+  status              String   @default("PENDING") @db.NVarChar(16)
+  /// SHA-256 de los parámetros aprobados; un cambio relevante invalida la aprobación.
+  parametersHash      String   @db.NVarChar(64)
+  maintenanceWindowId String?  @db.UniqueIdentifier
+  justification       String?  @db.NVarChar(500)
+  invalidatedReason   String?  @db.NVarChar(300)
+  createdAt           DateTime
+  expiresAt           DateTime
+
+  renewal           RenewalRequest     @relation(fields: [renewalId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  maintenanceWindow MaintenanceWindow? @relation(fields: [maintenanceWindowId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  decisions         ApprovalDecision[]
+  jobs              DeploymentJob[]
+
+  @@index([renewalId])
+  @@index([status])
+}
+
+model ApprovalDecision {
+  id            String   @id @default(uuid()) @db.UniqueIdentifier
+  approvalId    String   @db.UniqueIdentifier
+  deciderId     String   @db.UniqueIdentifier
+  /// APPROVED | REJECTED
+  decision      String   @db.NVarChar(16)
+  justification String   @db.NVarChar(500)
+  decidedAt     DateTime
+
+  approval ApprovalRequest @relation(fields: [approvalId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model DeploymentJob {
+  id                  String    @id @default(uuid()) @db.UniqueIdentifier
+  renewalId           String    @db.UniqueIdentifier
+  approvalId          String    @db.UniqueIdentifier
+  maintenanceWindowId String?   @db.UniqueIdentifier
+  createdById         String    @db.UniqueIdentifier
+  executorId          String?   @db.UniqueIdentifier
+  /// SIMULATION | LAB_AUTHORIZED (este último permanece deshabilitado)
+  mode                String    @default("SIMULATION") @db.NVarChar(16)
+  /// SCHEDULED | RUNNING | COMPLETED | FAILED | ROLLED_BACK | PARTIAL
+  status              String    @default("SCHEDULED") @db.NVarChar(16)
+  scheduledAt         DateTime
+  startedAt           DateTime?
+  finishedAt          DateTime?
+  idempotencyKey      String    @unique @db.NVarChar(100)
+  /// NONE | INSTALL_FAILURE | VERIFICATION_FAILURE | ROLLBACK_FAILURE (inyección de fallas en simulación)
+  simulateFailure     String    @default("NONE") @db.NVarChar(24)
+  createdAt           DateTime
+
+  renewal           RenewalRequest     @relation(fields: [renewalId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  approval          ApprovalRequest    @relation(fields: [approvalId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  maintenanceWindow MaintenanceWindow? @relation(fields: [maintenanceWindowId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  targets           DeploymentTarget[]
+
+  @@index([status])
+}
+
+model DeploymentTarget {
+  id                String  @id @default(uuid()) @db.UniqueIdentifier
+  jobId             String  @db.UniqueIdentifier
+  terminalId        String  @db.UniqueIdentifier
+  /// PENDING | INSTALLED | VERIFIED | FAILED | ROLLED_BACK | ROLLBACK_FAILED
+  status            String  @default("PENDING") @db.NVarChar(20)
+  /// Estado previo del almacén (PEM públicos) para poder revertir.
+  previousSlotsJson String? @db.NVarChar(Max)
+
+  job           DeploymentJob        @relation(fields: [jobId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  terminal      Terminal             @relation(fields: [terminalId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  attempts      DeploymentAttempt[]
+  verifications VerificationResult[]
+  rollbacks     RollbackOperation[]
+
+  @@unique([jobId, terminalId])
+}
+
+model DeploymentAttempt {
+  id            String    @id @default(uuid()) @db.UniqueIdentifier
+  targetId      String    @db.UniqueIdentifier
+  attemptNo     Int
+  startedAt     DateTime
+  finishedAt    DateTime?
+  /// SUCCESS | FAILURE
+  outcome       String    @db.NVarChar(16)
+  errorMessage  String?   @db.NVarChar(500)
+  correlationId String    @db.NVarChar(64)
+
+  target DeploymentTarget @relation(fields: [targetId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model VerificationResult {
+  id         String   @id @default(uuid()) @db.UniqueIdentifier
+  targetId   String   @db.UniqueIdentifier
+  passed     Boolean
+  detail     String   @db.NVarChar(500)
+  verifiedAt DateTime
+
+  target DeploymentTarget @relation(fields: [targetId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model RollbackOperation {
+  id            String   @id @default(uuid()) @db.UniqueIdentifier
+  targetId      String   @db.UniqueIdentifier
+  reason        String   @db.NVarChar(500)
+  /// Estado previo al intento de reversión (instantánea del almacén).
+  previousState String?  @db.NVarChar(Max)
+  /// SUCCESS | FAILURE
+  outcome       String   @db.NVarChar(16)
+  evidence      String?  @db.NVarChar(Max)
+  executedById  String   @db.UniqueIdentifier
+  executedAt    DateTime
+
+  target DeploymentTarget @relation(fields: [targetId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+// ───────────── Investigación y evidencia ─────────────
+
+model ConfigurationPolicy {
+  id          String   @id @default(uuid()) @db.UniqueIdentifier
+  key         String   @unique @db.NVarChar(100)
+  value       String   @db.NVarChar(500)
+  description String   @db.NVarChar(300)
+  updatedAt   DateTime
+}
+
+model Incident {
+  id            String    @id @default(uuid()) @db.UniqueIdentifier
+  /// P1 | P2 | P3
+  severity      String    @db.NVarChar(4)
+  title         String    @db.NVarChar(300)
+  occurredAt    DateTime
+  resolvedAt    DateTime?
+  certificateId String?   @db.UniqueIdentifier
+  terminalId    String?   @db.UniqueIdentifier
+  countryCode   String?   @db.NVarChar(2)
+  /// BASELINE | PILOT
+  period        String    @db.NVarChar(12)
+  isSynthetic   Boolean   @default(false)
+  createdById   String?   @db.UniqueIdentifier
+  createdAt     DateTime
+
+  certificate Certificate? @relation(fields: [certificateId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  terminal    Terminal?    @relation(fields: [terminalId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model MetricDefinition {
+  id          String @id @default(uuid()) @db.UniqueIdentifier
+  code        String @unique @db.NVarChar(40)
+  name        String @db.NVarChar(200)
+  formula     String @db.NVarChar(500)
+  unit        String @db.NVarChar(24)
+  description String @db.NVarChar(500)
+  source      String @db.NVarChar(200)
+}
+
+/// Metas preliminares de investigación (no son estándares universales).
+model MetricTarget {
+  id             String   @id @default(uuid()) @db.UniqueIdentifier
+  metricCode     String   @unique @db.NVarChar(40)
+  /// GTE | LTE
+  comparator     String   @db.NVarChar(4)
+  targetValue    Float
+  justification  String   @db.NVarChar(500)
+  source         String   @db.NVarChar(200)
+  responsible    String   @db.NVarChar(200)
+  setAt          DateTime
+  /// PROPOSED | APPROVED
+  approvalStatus String   @default("PROPOSED") @db.NVarChar(12)
+}
+
+model BaselineSnapshot {
+  id          String   @id @default(uuid()) @db.UniqueIdentifier
+  /// BASELINE | PILOT
+  kind        String   @db.NVarChar(12)
+  label       String   @db.NVarChar(200)
+  periodStart DateTime
+  periodEnd   DateTime
+  notes       String?  @db.NVarChar(500)
+  isSynthetic Boolean  @default(false)
+  createdById String?  @db.UniqueIdentifier
+  createdAt   DateTime
+
+  observations MetricObservation[]
+}
+
+model MetricObservation {
+  id          String @id @default(uuid()) @db.UniqueIdentifier
+  snapshotId  String @db.UniqueIdentifier
+  metricCode  String @db.NVarChar(40)
+  value       Float?
+  numerator   Float?
+  denominator Float?
+  sampleSize  Int
+
+  snapshot BaselineSnapshot @relation(fields: [snapshotId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([snapshotId])
+}
+
+model ResearchSample {
+  id                   String   @id @default(uuid()) @db.UniqueIdentifier
+  countries            String   @db.NVarChar(200)
+  storesCount          Int
+  terminalsCount       Int
+  certificatesObserved Int
+  informants           Int
+  ticketsAnalyzed      Int
+  periodStart          DateTime
+  periodEnd            DateTime
+  inclusionCriteria    String   @db.NVarChar(500)
+  exclusionCriteria    String   @db.NVarChar(500)
+  isSynthetic          Boolean  @default(false)
+  createdAt            DateTime
+}
+
+model UsabilitySurvey {
+  id             String   @id @default(uuid()) @db.UniqueIdentifier
+  respondentRole String   @db.NVarChar(64)
+  /// Arreglo JSON con las 10 respuestas (1 a 5) en el orden oficial del SUS.
+  answers        String   @db.NVarChar(100)
+  score          Float
+  isSynthetic    Boolean  @default(false)
+  submittedAt    DateTime
+  createdById    String?  @db.UniqueIdentifier
+}
+
+model ExperimentalRun {
+  id              String   @id @default(uuid()) @db.UniqueIdentifier
+  code            String   @unique @db.NVarChar(40)
+  objective       String   @db.NVarChar(300)
+  requirementCode String   @db.NVarChar(16)
+  scenario        String   @db.NVarChar(200)
+  ranAt           DateTime
+  environment     String   @db.NVarChar(100)
+  operatorId      String?  @db.UniqueIdentifier
+  sample          String   @db.NVarChar(300)
+  parameters      String   @db.NVarChar(Max)
+  expectedResult  String   @db.NVarChar(500)
+  obtainedResult  String   @db.NVarChar(500)
+  metrics         String   @db.NVarChar(Max)
+  /// PASSED | FAILED | PENDING
+  status          String   @db.NVarChar(12)
+  limitations     String   @db.NVarChar(500)
+  trlLevel        Int?
+  isSynthetic     Boolean  @default(true)
+  correlationId   String?  @db.NVarChar(64)
+
+  evidence TestEvidence[]
+
+  @@index([requirementCode])
+}
+
+model TestEvidence {
+  id          String   @id @default(uuid()) @db.UniqueIdentifier
+  runId       String   @db.UniqueIdentifier
+  kind        String   @db.NVarChar(24)
+  description String   @db.NVarChar(300)
+  content     String   @db.NVarChar(Max)
+  createdAt   DateTime
+
+  run ExperimentalRun @relation(fields: [runId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([runId])
+}
+
+model TraceabilityItem {
+  id              String   @id @default(uuid()) @db.UniqueIdentifier
+  requirementCode String   @unique @db.NVarChar(16)
+  objectiveCode   String   @db.NVarChar(8)
+  title           String   @db.NVarChar(200)
+  module          String   @db.NVarChar(200)
+  component       String   @db.NVarChar(300)
+  testCase        String?  @db.NVarChar(300)
+  testResult      String?  @db.NVarChar(300)
+  /// NOT_STARTED | IN_DEVELOPMENT | IMPLEMENTED | TESTED | VALIDATED
+  status          String   @db.NVarChar(16)
+  /// Un requisito solo puede estar VALIDATED si referencia una ejecución experimental aprobada.
+  evidenceRunId   String?  @db.UniqueIdentifier
+  updatedAt       DateTime
+}

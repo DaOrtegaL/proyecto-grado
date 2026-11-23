@@ -1,0 +1,11 @@
+[
+  {
+    "id": "76e20262-8b1b-405b-8a59-a9cdec1f976a",
+    "name": "Autenticación de cliente POS (mTLS)",
+    "minKeySizeBits": 2048,
+    "weakSignatures": "[\"RSASSA-PKCS1-v1_5-SHA1\",\"ECDSA-SHA1\"]",
+    "requiredEku": "clientAuth",
+    "alertThresholds": "[60,30,15,7]",
+    "ownerId": null
+  }
+]

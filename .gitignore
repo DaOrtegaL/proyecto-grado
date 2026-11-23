@@ -1,0 +1,16 @@
+node_modules/
+.vscode/
+dist/
+coverage/
+*.tsbuildinfo
+.env
+*.log
+.vite/
+playwright-report/
+test-results/
+evidence-output/
+*.pfx
+*.pem
+*.key
+tests/e2e/.work-db/
+.env.local
